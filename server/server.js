@@ -92,9 +92,9 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`========================================`);
-  console.log(`🚀 Geets Beauty World Server running on: http://localhost:${PORT}`);
+  console.log(`🚀 Geets Beauty World Server running on: http://0.0.0.0:${PORT}`);
   console.log(`📡 Products API: http://localhost:${PORT}/api/products`);
   console.log(`========================================`);
 });
