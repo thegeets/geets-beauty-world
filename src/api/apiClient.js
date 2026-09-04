@@ -1,4 +1,18 @@
-const API_BASE_URL = "http://localhost:5000/api";
+// API Base URL with Vite environment variable support and fallback defaults:
+// - Vercel / Production build defaults to Render backend: https://geets-beauty-world.onrender.com/api
+// - Local development (npm run dev) defaults to: http://localhost:5000/api
+// - Can be explicitly overridden with VITE_API_URL environment variable
+const getApiBaseUrl = () => {
+  const envUrl = import.meta.env.VITE_API_URL;
+  if (envUrl) {
+    return envUrl.replace(/\/+$/, "");
+  }
+  return import.meta.env.PROD
+    ? "https://geets-beauty-world.onrender.com/api"
+    : "http://localhost:5000/api";
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 /**
  * Generic API fetch helper with JSON parsing & error extraction
