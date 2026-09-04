@@ -1,0 +1,242 @@
+/* =====================================================
+   ADMIN DASHBOARD STYLES
+===================================================== */
+
+.admin-dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* STATS GRID */
+.admin-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.admin-stat-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 22px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.25s ease;
+}
+
+.admin-stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+}
+
+.admin-stat-info span {
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.admin-stat-info h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.admin-stat-icon-wrap {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.admin-stat-icon-wrap.pink {
+  background: #fdeef1;
+  color: #b85b70;
+}
+
+.admin-stat-icon-wrap.blue {
+  background: #eff6ff;
+  color: #3b82f6;
+}
+
+.admin-stat-icon-wrap.green {
+  background: #ecfdf5;
+  color: #10b981;
+}
+
+.admin-stat-icon-wrap.amber {
+  background: #fffbeb;
+  color: #f59e0b;
+}
+
+/* SECTIONS */
+.admin-card-panel {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 24px;
+}
+
+.admin-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.admin-panel-header h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.admin-view-all-link {
+  font-size: 13px;
+  font-weight: 700;
+  color: #b85b70;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.admin-view-all-link:hover {
+  color: #8e3547;
+  transform: translateX(2px);
+}
+
+/* TABLE */
+.admin-table-wrapper {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid #edf2f7;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+}
+
+.admin-table th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 700;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.admin-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+  vertical-align: middle;
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-table tr:hover td {
+  background: #fafafa;
+}
+
+/* STATUS PILLS */
+.admin-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.admin-status-pill.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.admin-status-pill.confirmed {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.admin-status-pill.shipped,
+.admin-status-pill.out-for-delivery {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.admin-status-pill.delivered,
+.admin-status-pill.approved {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.admin-status-pill.out-of-stock {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.admin-status-pill.in-stock {
+  background: #ecfdf5;
+  color: #065f46;
+}
+
+/* ACTION BUTTONS */
+.admin-action-btn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #475569;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.admin-action-btn:hover {
+  background: #f8fafc;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+.admin-action-btn.primary {
+  background: #b85b70;
+  color: #ffffff;
+  border-color: #b85b70;
+}
+
+.admin-action-btn.primary:hover {
+  background: #9e3c50;
+}
+
+.admin-action-btn.danger {
+  background: #fff1f2;
+  color: #e11d48;
+  border-color: #fecdd3;
+}
+
+.admin-action-btn.danger:hover {
+  background: #e11d48;
+  color: #ffffff;
+}

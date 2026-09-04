@@ -1,0 +1,176 @@
+/* =====================================================
+   GEETS BEAUTY WORLD - MASTER DESIGN SYSTEM
+   LUXURY COLOR PALETTE & DYNAMIC THEME SYSTEM
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+:root,
+[data-theme="light"] {
+  /* Backgrounds */
+  --bg-page: #fdf8f6;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fff5f7;
+  --bg-surface: #f9ecee;
+  --bg-surface-elevated: #ffffff;
+  --bg-header: rgba(253, 248, 246, 0.92);
+  --bg-top-bar: linear-gradient(135deg, #882e42 0%, #a63f56 50%, #882e42 100%);
+  
+  /* Primary Rose/Crimson */
+  --primary: #a8485c;
+  --primary-hover: #8e3547;
+  --primary-gradient: linear-gradient(135deg, #a8485c 0%, #8e3547 100%);
+  --primary-light: #fdeef1;
+  --primary-glow: rgba(168, 72, 92, 0.25);
+  
+  /* Accents */
+  --accent-gold: #c5924b;
+  --accent-gold-light: #fef7ec;
+  --accent-rose: #d68393;
+  --accent-amber: #f59e0b;
+  
+  /* Text */
+  --text-main: #2a171d;
+  --text-muted: #6e565f;
+  --text-subtle: #988089;
+  --text-inverse: #ffffff;
+  
+  /* Borders */
+  --border-color: rgba(168, 72, 92, 0.15);
+  --border-subtle: rgba(42, 23, 29, 0.08);
+  --border-glow: rgba(168, 72, 92, 0.35);
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 10px rgba(136, 46, 66, 0.04);
+  --shadow-md: 0 10px 30px rgba(136, 46, 66, 0.08);
+  --shadow-lg: 0 20px 50px rgba(136, 46, 66, 0.12);
+  --shadow-card: 0 10px 28px rgba(136, 46, 66, 0.06);
+  --shadow-card-hover: 0 22px 45px rgba(136, 46, 66, 0.14);
+  --shadow-glow: 0 0 25px rgba(168, 72, 92, 0.25);
+  
+  --card-bg: var(--bg-card);
+}
+
+/* =====================================================
+   LUXURY MIDNIGHT OBSIDIAN DARK THEME
+===================================================== */
+[data-theme="dark"] {
+  /* Deep Premium Obsidian & Velvet Slate Backgrounds */
+  --bg-page: #100e14;
+  --bg-card: #1a1722;
+  --bg-card-hover: #24202e;
+  --bg-surface: #201c28;
+  --bg-surface-elevated: #282433;
+  --bg-header: rgba(16, 14, 20, 0.92);
+  --bg-top-bar: linear-gradient(135deg, #3d1421 0%, #54192b 50%, #2f0e18 100%);
+  
+  /* Vibrant Luminous Coral Rose */
+  --primary: #f4728d;
+  --primary-hover: #fb8fa6;
+  --primary-gradient: linear-gradient(135deg, #f4728d 0%, #e11d48 100%);
+  --primary-light: rgba(244, 114, 141, 0.18);
+  --primary-glow: rgba(244, 114, 141, 0.4);
+  
+  /* Rich Gold & Starlight Accents */
+  --accent-gold: #fbbf24;
+  --accent-gold-light: rgba(251, 191, 36, 0.16);
+  --accent-rose: #fca5a5;
+  --accent-amber: #f59e0b;
+  
+  /* Ultra-Crisp & Elegant Typography */
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --text-subtle: #94a3b8;
+  --text-inverse: #100e14;
+  
+  /* Luminous Fine Borders */
+  --border-color: rgba(244, 114, 141, 0.22);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-glow: rgba(244, 114, 141, 0.5);
+  
+  /* Atmospheric Deep Shadows */
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.75);
+  --shadow-card: 0 10px 28px rgba(0, 0, 0, 0.45);
+  --shadow-card-hover: 0 22px 45px rgba(244, 114, 141, 0.22);
+  --shadow-glow: 0 0 35px rgba(244, 114, 141, 0.4);
+  
+  --card-bg: var(--bg-card);
+}
+
+/* =====================================================
+   GLOBAL BASE & SMOOTH TRANSITIONS
+===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-main);
+  font-family: 'Playfair Display', Georgia, serif;
+  margin-top: 0;
+  letter-spacing: -0.01em;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+/* Buttons */
+button {
+  font-family: inherit;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-page);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Selection */
+::selection {
+  background: var(--primary-light);
+  color: var(--primary);
+}

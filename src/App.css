@@ -1,0 +1,1482 @@
+/* =====================================================
+   GEETS BEAUTY - APP CSS
+===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #fffaf8;
+  color: #321f25;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* =====================================================
+   SHOP PAGE
+===================================================== */
+
+.shop-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #fffaf8;
+  color: #321f25;
+}
+
+/* =====================================================
+   SHOP HERO
+===================================================== */
+
+.shop-hero {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 75px 5% 45px;
+}
+
+.shop-eyebrow {
+  margin: 0 0 18px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #b85b70;
+  text-transform: uppercase;
+}
+
+.shop-hero h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 6vw, 82px);
+  line-height: 1.05;
+  font-weight: 700;
+  color: #321f25;
+}
+
+.shop-description {
+  margin: 22px auto 0;
+  max-width: 650px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #7d6c71;
+}
+
+/* =====================================================
+   CATEGORY FILTERS
+===================================================== */
+
+.category-filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin: 45px auto 35px;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  min-width: 135px;
+  height: 56px;
+  padding: 0 28px;
+
+  border: 1px solid #ead5d9;
+  border-radius: 999px;
+
+  background: #ffffff;
+  color: #806e73;
+
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.category-btn:hover {
+  transform: translateY(-2px);
+  border-color: #8f4355;
+  color: #8f4355;
+
+  box-shadow:
+    0 8px 20px rgba(100, 45, 60, 0.1);
+}
+
+.category-btn.active {
+  background: #8f4355;
+  border-color: #8f4355;
+  color: #ffffff;
+
+  box-shadow:
+    0 10px 25px rgba(143, 67, 85, 0.25);
+}
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.shop-search {
+  width: 90%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.shop-search input {
+  width: 100%;
+  height: 62px;
+
+  box-sizing: border-box;
+
+  padding: 0 26px;
+
+  border: 1px solid #ead5d9;
+  border-radius: 999px;
+
+  outline: none;
+
+  background: #ffffff;
+  color: #34242a;
+
+  font-family: inherit;
+  font-size: 17px;
+
+  transition: all 0.25s ease;
+}
+
+.shop-search input::placeholder {
+  color: #a5969a;
+}
+
+.shop-search input:focus {
+  border-color: #a94d62;
+
+  box-shadow:
+    0 0 0 4px rgba(169, 77, 98, 0.08);
+}
+
+/* =====================================================
+   PRODUCT COUNT
+===================================================== */
+
+.product-count {
+  max-width: 1500px;
+
+  margin: 20px auto 30px;
+  padding: 0 5%;
+
+  box-sizing: border-box;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  color: #806e73;
+}
+
+/* =====================================================
+   PRODUCT GRID
+===================================================== */
+
+.product-grid {
+  width: 100%;
+  max-width: 1500px;
+
+  margin: 0 auto;
+
+  padding: 0 5% 80px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 28px;
+}
+
+/* =====================================================
+   PRODUCT CARD
+===================================================== */
+
+.product-card {
+  width: 100%;
+
+  background: #ffffff;
+
+  border: 1px solid #eadbd7;
+  border-radius: 20px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 7px 25px rgba(80, 35, 45, 0.07);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-7px);
+
+  box-shadow:
+    0 18px 45px rgba(80, 35, 45, 0.15);
+}
+
+/* =====================================================
+   PRODUCT IMAGE
+===================================================== */
+
+.product-image-link {
+  display: block;
+  width: 100%;
+}
+
+.product-image-box {
+  position: relative;
+
+  width: 100%;
+  height: 300px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff4f1,
+      #f5e0e3
+    );
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+}
+
+/* =====================================================
+   PRODUCT BADGE
+===================================================== */
+
+.product-badge {
+  position: absolute;
+
+  top: 15px;
+  left: 15px;
+
+  padding: 7px 13px;
+
+  border-radius: 999px;
+
+  background: #8b4355;
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 0.4px;
+
+  box-shadow:
+    0 5px 15px rgba(90, 40, 55, 0.18);
+}
+
+/* =====================================================
+   PRODUCT INFO
+===================================================== */
+
+.product-info {
+  padding: 20px;
+}
+
+.product-category {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #9a4b5e;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 1.4px;
+
+  text-transform: uppercase;
+}
+
+/* =====================================================
+   PRODUCT NAME
+===================================================== */
+
+.product-name {
+  display: block;
+
+  min-height: 48px;
+
+  color: #39252a;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+
+  transition:
+    color 0.2s ease;
+}
+
+.product-name:hover {
+  color: #9a4b5e;
+}
+
+/* =====================================================
+   PRODUCT RATING
+===================================================== */
+
+.product-rating {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin: 12px 0;
+}
+
+.stars {
+  color: #d49b43;
+
+  font-size: 14px;
+
+  letter-spacing: 1px;
+}
+
+.rating-number {
+  color: #74676a;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* =====================================================
+   PRODUCT PRICE
+===================================================== */
+
+.product-price-row {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 9px;
+
+  margin: 10px 0 16px;
+}
+
+.product-price {
+  color: #7f3e50;
+
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.product-old-price {
+  color: #a99b9e;
+
+  font-size: 13px;
+
+  text-decoration: line-through;
+}
+
+/* =====================================================
+   ADD TO CART BUTTON
+===================================================== */
+
+.add-to-cart-btn {
+  width: 100%;
+
+  min-height: 44px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  background: #8b4355;
+  color: #ffffff;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.add-to-cart-btn:hover {
+  background: #713344;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(112, 49, 67, 0.2);
+}
+
+.add-to-cart-btn:active {
+  transform: translateY(0);
+}
+
+/* =====================================================
+   NO PRODUCTS
+===================================================== */
+
+.no-products {
+  min-height: 350px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  padding: 50px 20px;
+}
+
+.no-products h3 {
+  margin: 0 0 10px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 30px;
+
+  color: #321f25;
+}
+
+.no-products p {
+  margin: 0;
+
+  font-size: 17px;
+
+  color: #8a797e;
+}
+
+/* =====================================================
+   BEAUTY BANNER - HOME
+===================================================== */
+
+.beauty-banner {
+  position: relative;
+
+  width: calc(100% - 80px);
+
+  max-width: 1200px;
+
+  min-height: 320px;
+
+  margin: 80px auto;
+
+  padding: 60px 30px;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.75),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #f8e1e4,
+      #eed0d6,
+      #f8e9e5
+    );
+
+  border: 1px solid #ead1d5;
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 20px 50px rgba(112, 59, 70, 0.1);
+
+  overflow: hidden;
+}
+
+/* Decorative circle */
+
+.beauty-banner::before {
+  content: "";
+
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.35);
+
+  top: -100px;
+  left: -70px;
+}
+
+/* Decorative circle */
+
+.beauty-banner::after {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.25);
+
+  bottom: -90px;
+  right: -50px;
+}
+
+/* =====================================================
+   BEAUTY BANNER EYEBROW
+===================================================== */
+
+.beauty-banner .eyebrow {
+  position: relative;
+
+  z-index: 2;
+
+  margin: 0 0 14px;
+
+  color: #9a4b5e;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+}
+
+/* =====================================================
+   BEAUTY BANNER HEADING
+===================================================== */
+
+.beauty-banner h2 {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 700px;
+
+  margin: 0 0 28px;
+
+  color: #542733;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(30px, 4vw, 48px);
+
+  line-height: 1.15;
+
+  font-weight: 700;
+}
+
+/* =====================================================
+   BEAUTY BANNER BUTTON
+===================================================== */
+
+.beauty-banner .primary-button {
+  position: relative;
+
+  z-index: 2;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 130px;
+
+  padding: 13px 25px;
+
+  border-radius: 999px;
+
+  background: #8b4355;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  box-shadow:
+    0 10px 25px rgba(139, 67, 85, 0.2);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.beauty-banner .primary-button:hover {
+  transform: translateY(-3px);
+
+  background: #743647;
+
+  box-shadow:
+    0 14px 30px rgba(139, 67, 85, 0.28);
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1100px) {
+  .product-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 22px;
+  }
+
+  .product-image-box {
+    height: 270px;
+  }
+}
+
+/* =====================================================
+   TABLET / MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+  .shop-hero {
+    padding: 55px 20px 35px;
+  }
+
+  .shop-eyebrow {
+    font-size: 12px;
+    letter-spacing: 3px;
+  }
+
+  .shop-hero h1 {
+    font-size:
+      clamp(40px, 11vw, 58px);
+  }
+
+  .shop-description {
+    font-size: 16px;
+  }
+
+  /* CATEGORY */
+
+  .category-filters {
+    gap: 10px;
+
+    margin: 35px auto 25px;
+
+    padding: 0 15px;
+  }
+
+  .category-btn {
+    min-width: auto;
+
+    height: 48px;
+
+    padding: 0 20px;
+
+    font-size: 14px;
+  }
+
+  /* SEARCH */
+
+  .shop-search {
+    width: calc(100% - 30px);
+  }
+
+  .shop-search input {
+    height: 54px;
+
+    font-size: 15px;
+  }
+
+  /* COUNT */
+
+  .product-count {
+    padding: 0 20px;
+  }
+
+  /* PRODUCT GRID */
+
+  .product-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+
+    padding:
+      0 20px 60px;
+  }
+
+  /* PRODUCT IMAGE */
+
+  .product-image-box {
+    height: 240px;
+  }
+
+  /* PRODUCT INFO */
+
+  .product-info {
+    padding: 15px;
+  }
+
+  .product-name {
+    font-size: 16px;
+  }
+
+  .product-price {
+    font-size: 17px;
+  }
+
+  /* BEAUTY BANNER */
+
+  .beauty-banner {
+    width: calc(100% - 30px);
+
+    min-height: 280px;
+
+    margin: 55px auto;
+
+    padding: 45px 20px;
+
+    border-radius: 22px;
+  }
+
+  .beauty-banner .eyebrow {
+    font-size: 11px;
+
+    letter-spacing: 2px;
+  }
+
+  .beauty-banner h2 {
+    font-size: 30px;
+
+    margin-bottom: 24px;
+  }
+
+  .beauty-banner .primary-button {
+    padding: 12px 22px;
+  }
+}
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+  .category-filters {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    width: calc(100% - 20px);
+  }
+
+  .category-btn {
+    width: 100%;
+  }
+
+  .category-btn:first-child {
+    grid-column: span 2;
+  }
+
+  /* PRODUCT GRID */
+
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    padding:
+      0 10px 50px;
+  }
+
+  /* PRODUCT IMAGE */
+
+  .product-image-box {
+    height: 200px;
+  }
+
+  /* PRODUCT INFO */
+
+  .product-info {
+    padding: 12px;
+  }
+
+  .product-category {
+    font-size: 9px;
+
+    letter-spacing: 1px;
+  }
+
+  .product-name {
+    min-height: 42px;
+
+    font-size: 14px;
+  }
+
+  .product-rating {
+    gap: 5px;
+
+    margin: 8px 0;
+  }
+
+  .stars {
+    font-size: 11px;
+  }
+
+  .rating-number {
+    font-size: 11px;
+  }
+
+  .product-price-row {
+    gap: 5px;
+
+    margin: 8px 0 12px;
+  }
+
+  .product-price {
+    font-size: 14px;
+  }
+
+  .product-old-price {
+    font-size: 10px;
+  }
+
+  .add-to-cart-btn {
+    min-height: 38px;
+
+    border-radius: 9px;
+
+    font-size: 11px;
+
+    gap: 5px;
+  }
+
+  /* BEAUTY BANNER */
+
+  .beauty-banner {
+    width: calc(100% - 20px);
+
+    min-height: 270px;
+
+    margin: 45px auto;
+
+    padding: 40px 15px;
+  }
+
+  .beauty-banner h2 {
+    font-size: 27px;
+  }
+
+  /* =====================================================
+     PRODUCT CARD - MOBILE OVERRIDE
+  ===================================================== */
+
+  .product-card {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid #f1dfe8;
+    transition: all 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+      0 15px 35px rgba(122, 40, 80, 0.15);
+  }
+
+  .product-image-link {
+    display: block;
+    text-decoration: none;
+  }
+
+  .product-image-container {
+    width: 100%;
+    height: 210px;
+    background: #faf5f8;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+  }
+
+  .product-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+
+    background: #7a2850;
+    color: white;
+
+    padding: 6px 11px;
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .product-name-link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .product-name-link:hover .product-name {
+    color: #9b3d69;
+  }
+
+  .current-price {
+    color: #7a2850;
+
+    font-size: 17px;
+    font-weight: 800;
+  }
+
+  .old-price {
+    color: #999;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
+    text-decoration-color: #999;
+  }
+}
+
+/* =====================================================
+   PRODUCT CARD - GENERAL
+===================================================== */
+
+.product-card {
+  width: 100%;
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #f1dfe8;
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 15px 35px rgba(122, 40, 80, 0.15);
+}
+
+/* IMAGE */
+
+.product-image-link {
+  display: block;
+  text-decoration: none;
+}
+
+.product-image-container {
+  width: 100%;
+  height: 280px;
+  background: #faf5f8;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+/* BADGE */
+
+.product-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+
+  background: #7a2850;
+  color: white;
+
+  padding: 6px 11px;
+  border-radius: 20px;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* INFO */
+
+.product-info {
+  padding: 18px;
+}
+
+/* CATEGORY */
+
+.product-category {
+  display: inline-block;
+
+  color: #a05b7d;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  margin-bottom: 7px;
+}
+
+/* NAME */
+
+.product-name-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-name {
+  margin: 0;
+
+  color: #292129;
+
+  font-size: 17px;
+  line-height: 1.4;
+
+  font-weight: 700;
+
+  min-height: 48px;
+}
+
+.product-name-link:hover .product-name {
+  color: #9b3d69;
+}
+
+/* RATING */
+
+.product-rating {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: 9px;
+}
+
+.stars {
+  color: #f4b400;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.rating-number {
+  color: #666;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* =====================================================
+   PRICE
+===================================================== */
+
+.product-price {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-top: 12px;
+}
+
+/* CURRENT / OFFER PRICE */
+
+.current-price {
+  color: #7a2850;
+
+  font-size: 20px;
+  font-weight: 800;
+}
+
+/* OLD / ORIGINAL PRICE */
+
+.old-price {
+  color: #999;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+  text-decoration-color: #999;
+}
+
+/* =====================================================
+   RESPONSIVE PRODUCT CARD
+===================================================== */
+
+@media (max-width: 768px) {
+  .product-image-container {
+    height: 240px;
+  }
+
+  .product-info {
+    padding: 14px;
+  }
+
+  .product-name {
+    font-size: 15px;
+  }
+
+  .current-price {
+    font-size: 18px;
+  }
+
+  .old-price {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-image-container {
+    height: 210px;
+  }
+
+  .product-info {
+    padding: 12px;
+  }
+
+  .current-price {
+    font-size: 17px;
+  }
+
+  .old-price {
+    font-size: 12px;
+  }
+}
+
+/* =====================================================
+   BANK QR PAYMENT
+===================================================== */
+
+.qr-payment {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+.qr-box {
+  width: 100%;
+  max-width: 180px;
+
+  margin: 20px 0;
+  padding: 10px;
+
+  background: #ffffff;
+
+  border: 1px solid #eeeeee;
+  border-radius: 14px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-sizing: border-box;
+}
+
+.bank-qr {
+  display: block;
+
+  width: 100px !important;
+  height: 100px !important;
+
+  min-width: 0 !important;
+  min-height: 0 !important;
+
+  max-width: 100% !important;
+  max-height: 100% !important;
+
+  object-fit: contain;
+
+  border-radius: 6px;
+}
+
+.qr-instruction {
+  width: 100%;
+  max-width: 300px;
+
+  margin: 15px 0;
+  padding: 14px 18px;
+
+  background: #faf7f9;
+
+  border-radius: 12px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 15px;
+
+  box-sizing: border-box;
+}
+
+.qr-instruction strong {
+  font-size: 14px;
+}
+
+.qr-instruction span {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.payment-confirm {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 10px;
+
+  margin-top: 18px;
+  padding: 14px;
+
+  border-radius: 12px;
+
+  background: #fff8fb;
+
+  cursor: pointer;
+}
+
+.payment-confirm input {
+  margin-top: 3px;
+
+  width: 17px;
+  height: 17px;
+
+  cursor: pointer;
+}
+
+.payment-confirm span {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* =====================================================
+   PAYMENT PAGE - FINAL FONT FIX
+===================================================== */
+
+.payment-page {
+  font-family: "Inter", Arial, sans-serif !important;
+}
+
+/* Main Payment heading */
+
+.payment-page .payment-title {
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif !important;
+
+  font-size: 64px !important;
+  line-height: 1.05 !important;
+  font-weight: 500 !important;
+
+  margin: 0 0 8px !important;
+}
+
+/* Small GEETS BEAUTY WORLD text */
+
+.payment-page .payment-eyebrow {
+  font-family:
+    "Inter",
+    Arial,
+    sans-serif !important;
+
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+
+  font-weight: 700 !important;
+
+  letter-spacing: 3px !important;
+}
+
+/* Payment Method / Scan & Pay */
+
+.payment-page .section-title {
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif !important;
+
+  font-size: 36px !important;
+  line-height: 1.15 !important;
+  font-weight: 500 !important;
+
+  margin: 0 0 20px !important;
+}
+
+/* Normal paragraphs */
+
+.payment-page .payment-subtitle,
+.payment-page .section-description,
+.payment-page .payment-option-description,
+.payment-page .upload-description {
+  font-family:
+    "Inter",
+    Arial,
+    sans-serif !important;
+
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+}
+
+/* Cash on Delivery / Online Payment */
+
+.payment-page .payment-option-title {
+  font-family:
+    "Inter",
+    Arial,
+    sans-serif !important;
+
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+
+  font-weight: 700 !important;
+}
+
+/* Upload Payment Screenshot */
+
+.payment-page .upload-title {
+  font-family:
+    "Inter",
+    Arial,
+    sans-serif !important;
+
+  font-size: 17px !important;
+  line-height: 1.4 !important;
+
+  font-weight: 700 !important;
+}
+
+/* Order Summary */
+
+.payment-page .summary-title {
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif !important;
+
+  font-size: 36px !important;
+  line-height: 1.15 !important;
+
+  font-weight: 500 !important;
+}
+
+/* All summary text */
+
+.payment-page .summary-row,
+.payment-page .summary-total {
+  font-family:
+    "Inter",
+    Arial,
+    sans-serif !important;
+}
+
+/* Buttons */
+
+.payment-page button,
+.payment-page a {
+  font-family:
+    "Inter",
+    Arial,
+    sans-serif !important;
+}
+
+/* =====================================================
+   PAYMENT MOBILE
+===================================================== */
+
+@media (max-width: 768px) {
+  .payment-page .payment-title {
+    font-size: 48px !important;
+  }
+
+  .payment-page .section-title {
+    font-size: 30px !important;
+  }
+
+  .payment-page .summary-title {
+    font-size: 30px !important;
+  }
+
+  .qr-box {
+    max-width: 150px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .bank-qr {
+    width: 80px !important;
+    height: 80px !important;
+  }
+}

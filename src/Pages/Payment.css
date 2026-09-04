@@ -1,0 +1,832 @@
+/* =========================================
+   PAYMENT PAGE
+========================================= */
+
+.payment-page {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+
+  padding: 85px 40px 100px;
+
+  color: #342528;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.payment-header {
+  margin-bottom: 42px;
+}
+
+.payment-eyebrow {
+  margin: 0 0 12px;
+
+  color: #bd6975;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  text-transform: uppercase;
+}
+
+.payment-title {
+  margin: 0 0 8px;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: clamp(48px, 6vw, 68px);
+
+  line-height: 1.05;
+
+  font-weight: 500;
+
+  color: #342528;
+}
+
+.payment-subtitle {
+  margin: 0;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 16px;
+
+  line-height: 1.6;
+
+  color: #756467;
+}
+
+/* =========================================
+   SECTION
+========================================= */
+
+.payment-section,
+.online-payment-section,
+.payment-summary {
+  margin-bottom: 42px;
+}
+
+.section-title {
+  margin: 0 0 22px;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: 36px;
+
+  line-height: 1.15;
+
+  font-weight: 500;
+
+  color: #342528;
+}
+
+.section-description {
+  margin: -8px 0 24px;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 15px;
+
+  line-height: 1.6;
+
+  color: #756467;
+}
+
+/* =========================================
+   PAYMENT OPTIONS
+========================================= */
+
+.payment-option {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 12px;
+
+  width: 100%;
+
+  padding: 17px 20px;
+
+  margin-bottom: 12px;
+
+  border: 1px solid #eadbdd;
+
+  border-radius: 12px;
+
+  background: #fff;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.payment-option:hover {
+  border-color: #c98a94;
+}
+
+.payment-option.selected {
+  border-color: #bd6975;
+
+  background: #fffafb;
+
+  box-shadow:
+    0 8px 25px rgba(124, 63, 75, 0.08);
+}
+
+.payment-option input {
+  width: 16px;
+
+  height: 16px;
+
+  margin-top: 3px;
+
+  accent-color: #7c3f4b;
+
+  cursor: pointer;
+}
+
+.payment-option-content {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.payment-option-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 16px;
+
+  line-height: 1.4;
+
+  font-weight: 700;
+
+  color: #342528;
+}
+
+.payment-option-title svg {
+  color: #8d4858;
+}
+
+.payment-option-description {
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+
+  color: #756467;
+}
+
+/* =========================================
+   QR PAYMENT
+========================================= */
+
+.online-payment-section {
+  padding-top: 5px;
+}
+
+/* Old QR container */
+.qr-container {
+  width: 145px;
+
+  min-height: 145px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin: 25px 0;
+
+  padding: 15px;
+
+  border: 1px solid #eadbdd;
+
+  border-radius: 5px;
+
+  background: #fff;
+}
+
+.payment-qr {
+  width: 90px;
+
+  height: 90px;
+
+  max-width: 90px;
+
+  max-height: 90px;
+
+  object-fit: contain;
+}
+
+/* =========================================
+   ACTUAL BANK QR USED IN PAYMENT.JSX
+========================================= */
+
+.qr-box {
+  width: 120px !important;
+
+  height: 120px !important;
+
+  min-width: 120px !important;
+
+  min-height: 120px !important;
+
+  max-width: 120px !important;
+
+  max-height: 120px !important;
+
+  padding: 10px !important;
+
+  margin: 20px 0 !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+
+  justify-content: center !important;
+
+  overflow: hidden !important;
+
+  border: 1px solid #eadbdd;
+
+  border-radius: 5px;
+
+  background: #fff;
+
+  box-sizing: border-box;
+}
+
+.qr-box .bank-qr {
+  display: block !important;
+
+  width: 70px !important;
+
+  height: 70px !important;
+
+  min-width: 70px !important;
+
+  min-height: 70px !important;
+
+  max-width: 70px !important;
+
+  max-height: 70px !important;
+
+  object-fit: contain !important;
+
+  flex: 0 0 70px !important;
+}
+
+.qr-fallback {
+  margin: 0;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 14px;
+
+  color: #8d4858;
+}
+
+/* =========================================
+   QR INSTRUCTION
+========================================= */
+
+.qr-instruction {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  max-width: 500px;
+
+  margin: 20px 0 30px;
+
+  padding: 17px 20px;
+
+  border-radius: 10px;
+
+  background: #f8eeee;
+}
+
+.qr-instruction strong {
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 15px;
+
+  color: #756467;
+}
+
+.qr-instruction span {
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  color: #342528;
+}
+
+/* =========================================
+   AMOUNT
+========================================= */
+
+.payment-amount {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  max-width: 500px;
+
+  margin: 20px 0 30px;
+
+  padding: 17px 20px;
+
+  border-radius: 10px;
+
+  background: #f8eeee;
+}
+
+.payment-amount span {
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 15px;
+
+  color: #756467;
+}
+
+.payment-amount strong {
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  color: #342528;
+}
+
+/* =========================================
+   UPLOAD
+========================================= */
+
+.upload-section {
+  max-width: 700px;
+}
+
+.upload-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin: 0 0 8px;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 17px;
+
+  line-height: 1.4;
+
+  font-weight: 700;
+
+  color: #342528;
+}
+
+.upload-title svg {
+  color: #8d4858;
+}
+
+.upload-description {
+  margin: 0 0 15px;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  color: #756467;
+}
+
+.payment-file {
+  display: block;
+
+  width: 100%;
+
+  max-width: 500px;
+
+  padding: 10px;
+
+  border: 1px solid #eadbdd;
+
+  border-radius: 8px;
+
+  background: #fff;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 14px;
+
+  color: #342528;
+}
+
+.file-selected {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: 12px;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 14px;
+
+  color: #47754d;
+}
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.payment-message {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin: 20px 0;
+
+  padding: 14px 17px;
+
+  border-radius: 9px;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+.payment-message.error {
+  background: #fff0f0;
+
+  color: #9a3f4f;
+}
+
+.payment-message.success {
+  background: #eef8f0;
+
+  color: #47754d;
+}
+
+/* =========================================
+   ORDER SUMMARY
+========================================= */
+
+.payment-summary {
+  max-width: 700px;
+
+  padding: 30px;
+
+  border: 1px solid #eadbdd;
+
+  border-radius: 14px;
+
+  background: #fff;
+}
+
+.summary-title {
+  margin: 0 0 25px;
+
+  font-family:
+    "Playfair Display",
+    Georgia,
+    serif;
+
+  font-size: 36px;
+
+  line-height: 1.15;
+
+  font-weight: 500;
+
+  color: #342528;
+}
+
+.summary-row {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 10px 0;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 15px;
+
+  color: #756467;
+}
+
+.summary-row strong {
+  color: #342528;
+
+  font-weight: 700;
+}
+
+.summary-divider {
+  width: 100%;
+
+  height: 1px;
+
+  margin: 15px 0;
+
+  background: #eadbdd;
+}
+
+.summary-total {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  color: #342528;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.payment-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-top: 30px;
+}
+
+.back-to-cart {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 14px 22px;
+
+  border: 1px solid #eadbdd;
+
+  border-radius: 999px;
+
+  background: #fff;
+
+  color: #7c3f4b;
+
+  text-decoration: none;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  transition: all 0.25s ease;
+}
+
+.back-to-cart:hover {
+  border-color: #bd6975;
+
+  background: #fff8f9;
+}
+
+.confirm-payment-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 15px 28px;
+
+  border: none;
+
+  border-radius: 999px;
+
+  background: #bd6975;
+
+  color: #fff;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.confirm-payment-btn:hover {
+  background: #9f5260;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(124, 63, 75, 0.18);
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+  .payment-page {
+    padding: 55px 20px 80px;
+  }
+
+  .payment-title {
+    font-size: 48px;
+  }
+
+  .section-title {
+    font-size: 30px;
+  }
+
+  .summary-title {
+    font-size: 30px;
+  }
+
+  .payment-amount {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 6px;
+  }
+
+  .payment-actions {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .back-to-cart,
+  .confirm-payment-btn {
+    width: 100%;
+  }
+
+  .qr-container {
+    width: 100%;
+
+    max-width: 280px;
+  }
+
+  /* Actual bank QR on mobile */
+  .qr-box {
+    width: 120px !important;
+
+    height: 120px !important;
+
+    max-width: 120px !important;
+
+    max-height: 120px !important;
+  }
+
+  .qr-box .bank-qr {
+    width: 70px !important;
+
+    height: 70px !important;
+
+    max-width: 70px !important;
+
+    max-height: 70px !important;
+  }
+  .qr-box {
+  width: 90px !important;
+  height: 90px !important;
+  min-width: 90px !important;
+  min-height: 90px !important;
+  max-width: 90px !important;
+  max-height: 90px !important;
+  padding: 5px !important;
+  overflow: hidden !important;
+}
+
+.qr-box img.bank-qr {
+  width: 50px !important;
+  height: 50px !important;
+  min-width: 50px !important;
+  min-height: 50px !important;
+  max-width: 50px !important;
+  max-height: 50px !important;
+  display: block !important;
+  object-fit: contain !important;
+}
+}

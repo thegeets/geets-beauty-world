@@ -1,0 +1,247 @@
+/* =====================================================
+   GEETS BEAUTY WORLD - LUXURY FOOTER
+   Bonjour Nepal Standard Multi-Column Layout
+===================================================== */
+
+.site-footer {
+  background: var(--bg-surface, #f7ebea);
+  border-top: 1px solid var(--border-color, rgba(168, 72, 92, 0.16));
+  color: var(--text-main, #2a171d);
+  padding: 48px 6vw 32px;
+  margin-top: auto;
+  font-size: 14px;
+}
+
+/* Top Perks Strip */
+.footer-top-perks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1240px;
+  margin: 0 auto 48px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--border-color, rgba(168, 72, 92, 0.14));
+}
+
+.footer-perk-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg-card, #ffffff);
+  border: 1px solid var(--border-color, rgba(168, 72, 92, 0.12));
+  padding: 16px 20px;
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  color: var(--primary, #a8485c);
+}
+
+.footer-perk-item strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-main, #2a171d);
+}
+
+.footer-perk-item span {
+  font-size: 12px;
+  color: var(--text-muted, #6e565f);
+}
+
+/* Footer Main Grid */
+.footer-grid {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 1.8fr 1.1fr 1.1fr 1.4fr;
+  margin: 0 auto 48px;
+  max-width: 1240px;
+  text-align: left;
+}
+
+.footer-brand {
+  color: var(--primary, #a8485c);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.footer-brand span {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--text-muted, #6e565f);
+  display: block;
+  margin-top: 2px;
+}
+
+.footer-bio-text {
+  color: var(--text-muted, #6e565f);
+  line-height: 1.6;
+  max-width: 360px;
+  margin: 0 0 18px;
+  font-size: 13px;
+}
+
+.footer-contact-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.footer-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-main, #2a171d);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.footer-contact-link:hover {
+  color: var(--primary, #a8485c);
+}
+
+/* Social Links */
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.social-links a {
+  background: var(--bg-card, #ffffff);
+  border: 1px solid var(--border-color, rgba(168, 72, 92, 0.16));
+  border-radius: 99px;
+  color: var(--primary, #a8485c);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 16px;
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.social-links a:hover {
+  background: var(--primary, #a8485c);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Section Headers */
+.footer-grid h3 {
+  color: var(--text-main, #2a171d);
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 18px;
+  position: relative;
+}
+
+.footer-grid h3::after {
+  content: "";
+  background: var(--primary, #a8485c);
+  bottom: -6px;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  width: 28px;
+  border-radius: 999px;
+}
+
+.footer-grid div:nth-child(2),
+.footer-grid div:nth-child(3) {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-grid div:nth-child(2) a,
+.footer-grid div:nth-child(3) a {
+  color: var(--text-muted, #6e565f);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.15s ease;
+  align-self: flex-start;
+}
+
+.footer-grid div:nth-child(2) a:hover,
+.footer-grid div:nth-child(3) a:hover {
+  color: var(--primary, #a8485c);
+  transform: translateX(4px);
+}
+
+/* Location Items */
+.footer-loc-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.footer-loc-icon {
+  color: var(--primary, #a8485c);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.footer-loc-item strong {
+  display: block;
+  font-size: 13px;
+  color: var(--text-main, #2a171d);
+  font-weight: 700;
+}
+
+.footer-loc-item small {
+  font-size: 11px;
+  color: var(--text-muted, #6e565f);
+}
+
+/* Footer Bottom Bar */
+.footer-bottom {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-subtle, rgba(42, 23, 29, 0.08));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--text-muted, #6e565f);
+}
+
+.footer-bottom-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .footer-top-perks {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}

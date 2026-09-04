@@ -1,0 +1,270 @@
+/* =========================================
+   GEETS BEAUTY - CHECKOUT & PAYMENT PAGE
+========================================= */
+
+.checkout-page {
+  min-height: 100vh;
+  padding: 50px 24px 100px;
+  color: var(--text-main);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.checkout-page .page-heading {
+  margin-bottom: 36px;
+}
+
+.checkout-page .page-heading h1 {
+  margin: 8px 0;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--text-main);
+}
+
+.checkout-page .page-heading p {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* =========================================
+   LOGIN / EMPTY STATE
+========================================= */
+
+.checkout-login {
+  max-width: 520px;
+  margin: 60px auto;
+  padding: 48px 40px;
+  text-align: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  box-shadow: var(--shadow-md);
+}
+
+.checkout-login h1 {
+  margin: 14px 0 12px;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  color: var(--text-main);
+}
+
+.checkout-login p {
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+/* =========================================
+   LAYOUT
+========================================= */
+
+.checkout-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.75fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.checkout-form {
+  display: grid;
+  gap: 24px;
+}
+
+/* =========================================
+   SECTIONS
+========================================= */
+
+.checkout-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 28px 30px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.checkout-section h2 {
+  margin: 0 0 20px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* =========================================
+   FORM FIELDS
+========================================= */
+
+.form-group {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-group label {
+  color: var(--text-main);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--bg-surface);
+  color: var(--text-main);
+  font-size: 14px;
+  line-height: 1.4;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary);
+  background: var(--bg-card);
+  box-shadow: 0 0 0 4px var(--primary-glow);
+}
+
+.form-group small {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+/* =========================================
+   DELIVERY OPTIONS
+========================================= */
+
+.checkout-section .payment-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 14px;
+  background: var(--bg-surface);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.checkout-section .payment-option:hover {
+  border-color: var(--primary);
+  background: var(--bg-card-hover);
+}
+
+.payment-option strong {
+  display: block;
+  font-size: 14px;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.payment-option p {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.delivery-note {
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* =========================================
+   SUMMARY SIDEBAR
+========================================= */
+
+.checkout-summary {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 28px 24px;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 100px;
+}
+
+.checkout-summary h2 {
+  margin: 0 0 18px;
+  font-size: 20px;
+  color: var(--text-main);
+}
+
+.summary-product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.summary-product strong {
+  color: var(--text-main);
+}
+
+.checkout-summary hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 16px 0;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.summary-row strong {
+  color: var(--text-main);
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-top: 8px;
+}
+
+.summary-total strong {
+  color: var(--primary);
+  font-size: 22px;
+}
+
+.checkout-summary-note {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.full-width {
+  width: 100%;
+}
+
+@media (max-width: 860px) {
+  .checkout-layout {
+    grid-template-columns: 1fr;
+  }
+}
