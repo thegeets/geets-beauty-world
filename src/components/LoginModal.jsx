@@ -1,4 +1,6 @@
+
 import { useState } from "react";
+
 import {
   X,
   Mail,
@@ -6,20 +8,17 @@ import {
   User,
   Eye,
   EyeOff,
-  Facebook,
 } from "lucide-react";
+
 import { useAuth } from "../context/AuthContext";
 
 export default function LoginModal({ isOpen, onClose }) {
   const { login, signup } = useAuth();
-
   const [isSignUp, setIsSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -28,7 +27,6 @@ export default function LoginModal({ isOpen, onClose }) {
   // ==============================
   // RESET FORM
   // ==============================
-
   const resetForm = () => {
     setName("");
     setEmail("");
@@ -41,10 +39,8 @@ export default function LoginModal({ isOpen, onClose }) {
   // ==============================
   // SWITCH SIGN IN / SIGN UP
   // ==============================
-
   const switchMode = () => {
     setIsSignUp((prev) => !prev);
-
     setError("");
     setSuccess("");
     setShowPassword(false);
@@ -58,10 +54,8 @@ export default function LoginModal({ isOpen, onClose }) {
   // ==============================
   // SUBMIT
   // ==============================
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setError("");
     setSuccess("");
 
@@ -121,28 +115,11 @@ export default function LoginModal({ isOpen, onClose }) {
     }
   };
 
-  // ==============================
-  // GOOGLE
-  // ==============================
-
-  const handleGoogleLogin = () => {
-    setError("Google login is not connected yet.");
-  };
-
-  // ==============================
-  // FACEBOOK
-  // ==============================
-
-  const handleFacebookLogin = () => {
-    setError("Facebook login is not connected yet.");
-  };
-
   return (
     <>
       {/* =====================================================
           OVERLAY
       ===================================================== */}
-
       <div
         style={{
           position: "fixed",
@@ -161,7 +138,6 @@ export default function LoginModal({ isOpen, onClose }) {
         {/* =====================================================
             MAIN MODAL
         ===================================================== */}
-
         <div
           className="geets-login-card"
           style={{
@@ -180,7 +156,6 @@ export default function LoginModal({ isOpen, onClose }) {
           {/* =================================================
               CLOSE BUTTON
           ================================================= */}
-
           <button
             type="button"
             onClick={onClose}
@@ -209,11 +184,9 @@ export default function LoginModal({ isOpen, onClose }) {
 
           {/* =================================================
               FORM SIDE
-
-              SIGN IN  = LEFT
-              SIGN UP  = RIGHT
+              SIGN IN = LEFT
+              SIGN UP = RIGHT
           ================================================= */}
-
           <div
             style={{
               position: "absolute",
@@ -245,7 +218,6 @@ export default function LoginModal({ isOpen, onClose }) {
               {/* =================================================
                   FORM HEADER
               ================================================= */}
-
               <div
                 style={{
                   textAlign: "center",
@@ -297,7 +269,6 @@ export default function LoginModal({ isOpen, onClose }) {
               {/* =================================================
                   ERROR
               ================================================= */}
-
               {error && (
                 <div
                   style={{
@@ -319,7 +290,6 @@ export default function LoginModal({ isOpen, onClose }) {
               {/* =================================================
                   SUCCESS
               ================================================= */}
-
               {success && (
                 <div
                   style={{
@@ -341,7 +311,6 @@ export default function LoginModal({ isOpen, onClose }) {
               {/* =================================================
                   FORM
               ================================================= */}
-
               <form
                 onSubmit={handleSubmit}
                 style={{
@@ -353,7 +322,6 @@ export default function LoginModal({ isOpen, onClose }) {
                 {/* =================================================
                     FULL NAME — ONLY SIGN UP
                 ================================================= */}
-
                 {isSignUp && (
                   <div
                     style={{
@@ -389,7 +357,6 @@ export default function LoginModal({ isOpen, onClose }) {
                 {/* =================================================
                     EMAIL
                 ================================================= */}
-
                 <div>
                   <label style={labelStyle}>
                     Email Address
@@ -418,7 +385,6 @@ export default function LoginModal({ isOpen, onClose }) {
                 {/* =================================================
                     PASSWORD
                 ================================================= */}
-
                 <div>
                   <label style={labelStyle}>
                     Password
@@ -488,7 +454,6 @@ export default function LoginModal({ isOpen, onClose }) {
                 {/* =================================================
                     DEMO LOGIN
                 ================================================= */}
-
                 {!isSignUp && (
                   <div
                     style={{
@@ -512,7 +477,6 @@ export default function LoginModal({ isOpen, onClose }) {
                 {/* =================================================
                     SUBMIT BUTTON
                 ================================================= */}
-
                 <button
                   type="submit"
                   style={{
@@ -538,81 +502,8 @@ export default function LoginModal({ isOpen, onClose }) {
               </form>
 
               {/* =================================================
-                  OR
-              ================================================= */}
-
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "9px",
-                  margin: "16px 0",
-                  color: "#aa989d",
-                  fontSize: "9px",
-                  fontWeight: 600,
-                  whiteSpace: "nowrap",
-                }}
-              >
-                <span style={lineStyle} />
-
-                OR CONTINUE WITH
-
-                <span style={lineStyle} />
-              </div>
-
-              {/* =================================================
-                  GOOGLE + FACEBOOK
-              ================================================= */}
-
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns:
-                    "1fr 1fr",
-                  gap: "10px",
-                }}
-              >
-                {/* GOOGLE */}
-
-                <button
-                  type="button"
-                  onClick={handleGoogleLogin}
-                  style={socialButtonStyle}
-                >
-                  <span
-                    style={{
-                      fontSize: "17px",
-                      fontWeight: 800,
-                      color: "#4285F4",
-                    }}
-                  >
-                    G
-                  </span>
-
-                  Google
-                </button>
-
-                {/* FACEBOOK */}
-
-                <button
-                  type="button"
-                  onClick={handleFacebookLogin}
-                  style={socialButtonStyle}
-                >
-                  <Facebook
-                    size={17}
-                    fill="#1877F2"
-                    color="#1877F2"
-                  />
-
-                  Facebook
-                </button>
-              </div>
-
-              {/* =================================================
                   BOTTOM SWITCH
               ================================================= */}
-
               <div
                 style={{
                   marginTop: "18px",
@@ -648,41 +539,32 @@ export default function LoginModal({ isOpen, onClose }) {
 
           {/* =====================================================
               WELCOME / ANIMATED PANEL
-
-              SIGN IN  = RIGHT
-              SIGN UP  = LEFT
+              SIGN IN = RIGHT
+              SIGN UP = LEFT
           ===================================================== */}
-
           <div
             style={{
               position: "absolute",
               top: 0,
-
               left: isSignUp
                 ? "0%"
                 : "50%",
-
               width: "50%",
               height: "100%",
               zIndex: 40,
-
               background:
                 "linear-gradient(145deg, #542733, #8b4355 55%, #b85b70)",
-
               clipPath: isSignUp
                 ? "polygon(0 0, 88% 0, 100% 100%, 0 100%)"
                 : "polygon(12% 0, 100% 0, 100% 100%, 0 100%)",
-
               transition:
                 "left 0.7s cubic-bezier(.77,0,.175,1), clip-path 0.7s cubic-bezier(.77,0,.175,1)",
-
               overflow: "hidden",
             }}
           >
             {/* =================================================
                 DECORATION CIRCLE 1
             ================================================= */}
-
             <div
               style={{
                 position: "absolute",
@@ -699,7 +581,6 @@ export default function LoginModal({ isOpen, onClose }) {
             {/* =================================================
                 DECORATION CIRCLE 2
             ================================================= */}
-
             <div
               style={{
                 position: "absolute",
@@ -716,7 +597,6 @@ export default function LoginModal({ isOpen, onClose }) {
             {/* =================================================
                 WELCOME CONTENT
             ================================================= */}
-
             <div
               style={{
                 position: "absolute",
@@ -744,7 +624,6 @@ export default function LoginModal({ isOpen, onClose }) {
                 }}
               >
                 {/* FLOWER */}
-
                 <div
                   style={{
                     width: "68px",
@@ -766,7 +645,6 @@ export default function LoginModal({ isOpen, onClose }) {
                 </div>
 
                 {/* BRAND */}
-
                 <p
                   style={{
                     margin: "0 0 10px",
@@ -780,7 +658,6 @@ export default function LoginModal({ isOpen, onClose }) {
                 </p>
 
                 {/* TITLE */}
-
                 <h2
                   style={{
                     margin: "0 0 17px",
@@ -796,7 +673,6 @@ export default function LoginModal({ isOpen, onClose }) {
                 </h2>
 
                 {/* DESCRIPTION */}
-
                 <p
                   style={{
                     margin: 0,
@@ -811,7 +687,6 @@ export default function LoginModal({ isOpen, onClose }) {
                 </p>
 
                 {/* PANEL BUTTON */}
-
                 <button
                   type="button"
                   onClick={switchMode}
@@ -845,14 +720,12 @@ export default function LoginModal({ isOpen, onClose }) {
       {/* =====================================================
           ANIMATIONS + RESPONSIVE
       ===================================================== */}
-
       <style>
         {`
           @keyframes geetsFade {
             from {
               opacity: 0;
             }
-
             to {
               opacity: 1;
             }
@@ -863,7 +736,6 @@ export default function LoginModal({ isOpen, onClose }) {
               opacity: 0;
               transform: scale(0.94) translateY(15px);
             }
-
             to {
               opacity: 1;
               transform: scale(1) translateY(0);
@@ -875,7 +747,6 @@ export default function LoginModal({ isOpen, onClose }) {
               opacity: 0;
               transform: translateX(-25px);
             }
-
             to {
               opacity: 1;
               transform: translateX(0);
@@ -887,7 +758,6 @@ export default function LoginModal({ isOpen, onClose }) {
               opacity: 0;
               transform: translateX(25px);
             }
-
             to {
               opacity: 1;
               transform: translateX(0);
@@ -899,7 +769,6 @@ export default function LoginModal({ isOpen, onClose }) {
               opacity: 0;
               transform: translateX(25px);
             }
-
             to {
               opacity: 1;
               transform: translateX(0);
@@ -911,7 +780,6 @@ export default function LoginModal({ isOpen, onClose }) {
               opacity: 0;
               transform: translateY(-8px);
             }
-
             to {
               opacity: 1;
               transform: translateY(0);
@@ -919,7 +787,6 @@ export default function LoginModal({ isOpen, onClose }) {
           }
 
           @media (max-width: 750px) {
-
             .geets-login-card {
               width: 95vw !important;
               height: 90vh !important;
@@ -929,7 +796,6 @@ export default function LoginModal({ isOpen, onClose }) {
           }
 
           @media (max-width: 600px) {
-
             .geets-login-card {
               height: auto !important;
               min-height: 650px !important;
@@ -980,23 +846,3 @@ const inputStyle = {
   fontSize: "12px",
 };
 
-const lineStyle = {
-  flex: 1,
-  height: "1px",
-  background: "#ead5d9",
-};
-
-const socialButtonStyle = {
-  height: "42px",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: "7px",
-  border: "1px solid #ead5d9",
-  borderRadius: "10px",
-  background: "#ffffff",
-  color: "#542733",
-  fontSize: "11px",
-  fontWeight: 700,
-  cursor: "pointer",
-};

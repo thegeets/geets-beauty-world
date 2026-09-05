@@ -1,59 +1,83 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&display=swap");
 
 :root {
-  --cream: #fffaf7;
-  --cream-dark: #f7eee9;
-  --white: #ffffff;
-  --rose: #bd6975;
-  --rose-dark: #7c3f4b;
-  --rose-light: #f8e4e4;
-  --brown: #342528;
-  --muted: #857477;
-  --border: #eadbdd;
-  --gold: #c5924b;
+  --cream: var(--bg-page, #fdf8f6);
+  --cream-dark: var(--bg-surface, #f9ecee);
+  --white: var(--bg-card, #ffffff);
+  --rose: var(--primary, #a8485c);
+  --rose-dark: var(--primary-hover, #8e3547);
+  --rose-light: var(--primary-light, #fdeef1);
+  --brown: var(--text-main, #2a171d);
+  --muted: var(--text-muted, #6e565f);
+  --border: var(--border-color, rgba(168, 72, 92, 0.15));
+  --gold: var(--accent-gold, #c5924b);
   --shadow-sm: 0 8px 25px rgba(111, 58, 67, 0.08);
   --shadow-lg: 0 22px 60px rgba(111, 58, 67, 0.16);
   --radius: 22px;
 }
 
 [data-theme="dark"] {
-  --cream: #1a1214;
-  --cream-dark: #241a1d;
-  --white: #2a2023;
-  --rose: #d47a86;
-  --rose-dark: #e8a0aa;
-  --rose-light: #3a2529;
-  --brown: #f5ecee;
-  --muted: #b9a9ac;
-  --border: #463338;
-  --gold: #d4a85a;
-  --shadow-sm: 0 8px 25px rgba(0, 0, 0, 0.25);
-  --shadow-lg: 0 22px 60px rgba(0, 0, 0, 0.35);
+  --cream: var(--bg-page, #100e14);
+  --cream-dark: var(--bg-surface, #201c28);
+  --white: var(--bg-card, #1a1722);
+  --rose: var(--primary, #f4728d);
+  --rose-dark: var(--primary-hover, #fb8fa6);
+  --rose-light: rgba(244, 114, 141, 0.18);
+  --brown: var(--text-main, #f8fafc);
+  --muted: var(--text-muted, #cbd5e1);
+  --border: var(--border-color, rgba(244, 114, 141, 0.22));
+  --gold: var(--accent-gold, #fbbf24);
+  --shadow-sm: 0 8px 25px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 22px 60px rgba(0, 0, 0, 0.65);
+}
+
+[data-theme="dark"] body {
+  background: var(--bg-page) !important;
+  color: var(--text-main) !important;
 }
 
 [data-theme="dark"] .home-page,
-[data-theme="dark"] .cart-page {
-  background: var(--cream) !important;
-  color: var(--brown) !important;
+[data-theme="dark"] .cart-page,
+[data-theme="dark"] .shop-page-wrapper,
+[data-theme="dark"] .product-details-page {
+  background: var(--bg-page) !important;
+  color: var(--text-main) !important;
 }
 
 [data-theme="dark"] .home-category-card,
 [data-theme="dark"] .checkout-section,
+[data-theme="dark"] .cart-summary,
 [data-theme="dark"] .cart-summary.checkout-summary,
 [data-theme="dark"] .review-form,
 [data-theme="dark"] .review-card,
-[data-theme="dark"] .home-review-card {
-  background: var(--white) !important;
-  border-color: var(--border) !important;
-  color: var(--brown);
+[data-theme="dark"] .home-review-card,
+[data-theme="dark"] .product-card,
+[data-theme="dark"] .shop-sidebar-filter {
+  background: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-main) !important;
 }
 
 [data-theme="dark"] .form-group input,
 [data-theme="dark"] .form-group select,
-[data-theme="dark"] .form-group textarea {
-  background: var(--cream-dark);
-  color: var(--brown);
-  border-color: var(--border);
+[data-theme="dark"] .form-group textarea,
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+  background: var(--bg-surface) !important;
+  color: var(--text-main) !important;
+  border-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .product-name,
+[data-theme="dark"] .current-price,
+[data-theme="dark"] .product-price,
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5 {
+  color: var(--text-main) !important;
 }
 
 * {

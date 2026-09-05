@@ -308,11 +308,30 @@ export default function ProductDetails() {
                 fontWeight: "700",
                 padding: "4px 12px",
                 borderRadius: "999px",
-                background: isOutOfStock ? "#fef2f2" : "#f0fdf4",
-                color: isOutOfStock ? "#dc2626" : "#16a34a",
+                background: isOutOfStock
+                  ? "#fef2f2"
+                  : Number(product.stock || 0) > 0 && Number(product.stock || 0) <= 5
+                  ? "#fff7ed"
+                  : "#f0fdf4",
+                color: isOutOfStock
+                  ? "#dc2626"
+                  : Number(product.stock || 0) > 0 && Number(product.stock || 0) <= 5
+                  ? "#c2410c"
+                  : "#16a34a",
+                border: isOutOfStock
+                  ? "1px solid #fca5a5"
+                  : Number(product.stock || 0) > 0 && Number(product.stock || 0) <= 5
+                  ? "1px solid #fed7aa"
+                  : "1px solid #bbf7d0",
               }}
             >
-              {isOutOfStock ? "Out of Stock" : "In Stock & Ready to Ship"}
+              {isOutOfStock
+                ? "Out of Stock"
+                : Number(product.stock || 0) > 0 && Number(product.stock || 0) <= 5
+                ? `Only ${product.stock} left in stock!`
+                : product.stock !== undefined
+                ? `In Stock (${product.stock} units available)`
+                : "In Stock & Ready to Ship"}
             </span>
           </div>
 
@@ -359,6 +378,7 @@ export default function ProductDetails() {
               <button
                 type="button"
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                disabled={isOutOfStock || quantity <= 1}
                 style={{
                   width: "36px",
                   height: "36px",
@@ -367,8 +387,9 @@ export default function ProductDetails() {
                   background: "transparent",
                   fontSize: "18px",
                   fontWeight: "700",
-                  cursor: "pointer",
+                  cursor: isOutOfStock || quantity <= 1 ? "not-allowed" : "pointer",
                   color: "var(--text-main)",
+                  opacity: isOutOfStock || quantity <= 1 ? 0.4 : 1,
                 }}
               >
                 -
@@ -378,7 +399,11 @@ export default function ProductDetails() {
               </span>
               <button
                 type="button"
-                onClick={() => setQuantity(quantity + 1)}
+                onClick={() => {
+                  const maxStock = product.stock !== undefined ? Number(product.stock) : 999;
+                  setQuantity((prev) => Math.min(maxStock, prev + 1));
+                }}
+                disabled={isOutOfStock || (product.stock !== undefined && quantity >= Number(product.stock))}
                 style={{
                   width: "36px",
                   height: "36px",
@@ -387,8 +412,9 @@ export default function ProductDetails() {
                   background: "transparent",
                   fontSize: "18px",
                   fontWeight: "700",
-                  cursor: "pointer",
+                  cursor: isOutOfStock || (product.stock !== undefined && quantity >= Number(product.stock)) ? "not-allowed" : "pointer",
                   color: "var(--text-main)",
+                  opacity: isOutOfStock || (product.stock !== undefined && quantity >= Number(product.stock)) ? 0.4 : 1,
                 }}
               >
                 +

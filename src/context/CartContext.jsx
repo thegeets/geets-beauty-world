@@ -48,7 +48,15 @@ export function CartProvider({ children }) {
   // ADD TO CART
   // ============================================
 
-  const addToCart = (product) => {
+  const addToCart = (product, count = 1) => {
+    if (!product) return;
+    
+    // Check if out of stock
+    const isOut = product.inStock === false || (product.stock !== undefined && Number(product.stock) <= 0);
+    if (isOut) return;
+
+    const maxStock = product.stock !== undefined ? Number(product.stock) : 999;
+
     setCart((currentCart) => {
       const existingProduct = currentCart.find(
         (item) => item.id === product.id
@@ -56,22 +64,26 @@ export function CartProvider({ children }) {
 
       // Product already exists
       if (existingProduct) {
+        const currentQty = Number(existingProduct.quantity || 0);
+        const nextQty = Math.min(maxStock, currentQty + count);
         return currentCart.map((item) =>
           item.id === product.id
             ? {
                 ...item,
-                quantity: Number(item.quantity || 0) + 1,
+                ...product,
+                quantity: nextQty,
               }
             : item
         );
       }
 
       // New product
+      const initialQty = Math.min(maxStock, Math.max(1, count));
       return [
         ...currentCart,
         {
           ...product,
-          quantity: 1,
+          quantity: initialQty,
         },
       ];
     });
@@ -111,14 +123,16 @@ export function CartProvider({ children }) {
     }
 
     setCart((currentCart) =>
-      currentCart.map((item) =>
-        item.id === productId
-          ? {
-              ...item,
-              quantity: newQuantity,
-            }
-          : item
-      )
+      currentCart.map((item) => {
+        if (item.id === productId) {
+          const maxStock = item.stock !== undefined ? Number(item.stock) : 999;
+          return {
+            ...item,
+            quantity: Math.min(maxStock, newQuantity),
+          };
+        }
+        return item;
+      })
     );
   };
 

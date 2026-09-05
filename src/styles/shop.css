@@ -5,10 +5,12 @@
 
 .shop-page-wrapper {
   width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
   min-height: 100vh;
   background: var(--bg-page, #fdf8f6);
   color: var(--text-main, #2a171d);
-  padding: 24px 6vw 80px;
+  padding: 24px 32px 80px;
   box-sizing: border-box;
 }
 
@@ -96,8 +98,8 @@
 ========================================= */
 .shop-layout-container {
   display: grid;
-  grid-template-columns: 290px 1fr;
-  gap: 36px;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 28px;
   align-items: flex-start;
 }
 

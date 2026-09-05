@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Mail, Lock, User, Eye, EyeOff, Sparkles, ArrowRight } from "lucide-react";
+import { Mail, Lock, User, Eye, EyeOff, Sparkles, ArrowRight, Facebook } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 
 export default function Login() {
@@ -378,6 +378,73 @@ export default function Login() {
             <ArrowRight size={16} />
           </button>
         </form>
+
+        {/* OR DIVIDER */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
+            margin: "20px 0",
+            color: "var(--text-subtle, #988089)",
+            fontSize: "11px",
+            fontWeight: 700,
+            letterSpacing: "0.8px",
+          }}
+        >
+          <span style={{ flex: 1, height: "1px", background: "var(--border-color, rgba(168, 72, 92, 0.15))" }} />
+          <span>OR CONTINUE WITH</span>
+          <span style={{ flex: 1, height: "1px", background: "var(--border-color, rgba(168, 72, 92, 0.15))" }} />
+        </div>
+
+        {/* SOCIAL LOGINS */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+          <button
+            type="button"
+            onClick={() => setError("Google login requires OAuth Client ID configuration in production. Please use Email/Password sign in.")}
+            style={{
+              height: "44px",
+              borderRadius: "12px",
+              border: "1px solid var(--border-color, rgba(168, 72, 92, 0.18))",
+              background: "var(--bg-card, #ffffff)",
+              color: "var(--text-main, #2a171d)",
+              fontSize: "13px",
+              fontWeight: 700,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px",
+              cursor: "pointer",
+              transition: "all 0.2s ease",
+            }}
+          >
+            <span style={{ fontSize: "16px", fontWeight: 800, color: "#4285F4" }}>G</span>
+            <span>Google</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setError("Facebook login requires App ID configuration in production. Please use Email/Password sign in.")}
+            style={{
+              height: "44px",
+              borderRadius: "12px",
+              border: "1px solid var(--border-color, rgba(168, 72, 92, 0.18))",
+              background: "var(--bg-card, #ffffff)",
+              color: "var(--text-main, #2a171d)",
+              fontSize: "13px",
+              fontWeight: 700,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "8px",
+              cursor: "pointer",
+              transition: "all 0.2s ease",
+            }}
+          >
+            <Facebook size={16} fill="#1877F2" color="#1877F2" />
+            <span>Facebook</span>
+          </button>
+        </div>
 
         <div style={{ textAlign: "center", marginTop: "22px", fontSize: "13px", color: "var(--text-muted, #6e565f)" }}>
           {isSignUp ? "Already have a customer account?" : "New to Geets Beauty?"}{" "}

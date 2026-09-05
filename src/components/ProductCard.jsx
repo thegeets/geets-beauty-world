@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
@@ -36,9 +37,13 @@ export default function ProductCard({
     }
 
     let clean = String(img).trim();
+
     if (clean.startsWith("public/")) {
       clean = "/" + clean.replace(/^public\//, "");
-    } else if (!clean.startsWith("/") && !clean.startsWith("http")) {
+    } else if (
+      !clean.startsWith("/") &&
+      !clean.startsWith("http")
+    ) {
       clean = "/" + clean;
     }
 
@@ -46,7 +51,9 @@ export default function ProductCard({
   };
 
   const hasHoverImage = Boolean(
-    enableHover && product?.hoverImage && String(product.hoverImage).trim() !== ""
+    enableHover &&
+      product?.hoverImage &&
+      String(product.hoverImage).trim() !== ""
   );
 
   /* ========================================
@@ -56,7 +63,6 @@ export default function ProductCard({
   const handleWishlistClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-
     toggleWishlist(product);
   };
 
@@ -247,13 +253,54 @@ export default function ProductCard({
      STOCK
   ======================================== */
 
+  const currentStock =
+    Number(product.stock) || 0;
+
+  const soldCount =
+    Number(product.soldCount) || 0;
+
+  /*
+     FRONTEND DISPLAY ONLY
+
+     Backend ko actual stock change hudaina.
+     Product ID anusar "left" value different
+     dekhaune matra ho.
+  */
+
+  const displayStockMap = {
+    1: 8,
+    2: 12,
+    3: 6,
+    4: 10,
+    5: 7,
+    6: 14,
+    7: 5,
+    8: 11,
+    9: 9,
+    10: 4,
+    11: 13,
+    12: 7,
+    13: 16,
+    14: 6,
+    15: 10,
+    16: 8,
+    17: 12,
+    18: 5,
+    19: 9,
+    20: 14,
+  };
+
+  const displayStock =
+    displayStockMap[product.id] ??
+    ((Number(product.id) * 7) % 15) + 4;
+
   const isLowStock =
-    (Number(product.stock) || 0) > 0 &&
-    (Number(product.stock) || 0) <= 5;
+    currentStock > 0 &&
+    currentStock <= 5;
 
   const isOutOfStock =
     product.inStock === false ||
-    (Number(product.stock) || 0) === 0;
+    currentStock === 0;
 
   /* ========================================
      UI
@@ -262,7 +309,11 @@ export default function ProductCard({
   return (
     <div
       className={`product-card ${
-        hasHoverImage ? "hover-enabled has-hover-image" : ""
+        hasHoverImage
+          ? "hover-enabled has-hover-image"
+          : ""
+      } ${
+        isAdded ? "is-product-added" : ""
       }`}
       tabIndex="0"
     >
@@ -277,7 +328,7 @@ export default function ProductCard({
         aria-label="Add to Wishlist"
       >
         <Heart
-          size={24}
+          size={22}
           color={
             isWishlisted
               ? "#ffffff"
@@ -336,6 +387,7 @@ export default function ProductCard({
             )}
 
             <div className="product-image-stage">
+
               <img
                 src={formatImg(
                   product.image
@@ -343,7 +395,11 @@ export default function ProductCard({
                 alt={product.name}
                 className="product-image"
                 onError={(e) => {
-                  if (!e.currentTarget.src.includes("logo")) {
+                  if (
+                    !e.currentTarget.src.includes(
+                      "logo"
+                    )
+                  ) {
                     e.currentTarget.src =
                       "/logo of geets beauty product.png";
                   }
@@ -358,10 +414,12 @@ export default function ProductCard({
                   alt={`${product.name} alternate view`}
                   className="product-hover-image"
                   onError={(e) => {
-                    e.currentTarget.style.display = "none";
+                    e.currentTarget.style.display =
+                      "none";
                   }}
                 />
               )}
+
             </div>
 
             {/* ADD TO CART ACTION BAR */}
@@ -387,7 +445,7 @@ export default function ProductCard({
                   </span>
                 ) : isAdded ? (
                   <span className="cart-btn-content">
-                    <Check size={20} />
+                    <Check size={18} />
 
                     <span>
                       Added to Cart ✓
@@ -396,7 +454,7 @@ export default function ProductCard({
                 ) : (
                   <span className="cart-btn-content">
                     <ShoppingBag
-                      size={20}
+                      size={18}
                     />
 
                     <span>
@@ -406,6 +464,7 @@ export default function ProductCard({
                 )}
               </button>
             </div>
+
           </div>
         </Link>
       </div>
@@ -413,6 +472,7 @@ export default function ProductCard({
       {/* PRODUCT INFORMATION */}
 
       <div className="product-info">
+
         <div
           style={{
             display: "flex",
@@ -426,20 +486,7 @@ export default function ProductCard({
             {product.category}
           </span>
 
-          {isLowStock && (
-            <span
-              style={{
-                fontSize: "11px",
-                color: "#dc2626",
-                fontWeight: "700",
-              }}
-            >
-              Only{" "}
-              {product.stock} left!
-            </span>
-          )}
-
-          {isOutOfStock && (
+          {isOutOfStock ? (
             <span
               style={{
                 fontSize: "11px",
@@ -448,6 +495,20 @@ export default function ProductCard({
               }}
             >
               Out of Stock
+            </span>
+          ) : (
+            <span
+              style={{
+                fontSize: "11px",
+                color:
+                  isLowStock
+                    ? "#dc2626"
+                    : "#16a34a",
+                fontWeight: "700",
+              }}
+            >
+              {soldCount} sold ·{" "}
+              {displayStock} left
             </span>
           )}
         </div>
@@ -489,7 +550,10 @@ export default function ProductCard({
             </span>
           )}
         </div>
+
       </div>
     </div>
   );
 }
+
+

@@ -1,3 +1,4 @@
+
 /* =====================================================
    GEETS BEAUTY WORLD
    ORDER SUCCESS
@@ -5,20 +6,15 @@
 
 .order-success {
   min-height: 100vh;
-
-  padding: 70px 20px 100px;
-
+  padding: 28px 20px 35px;
   box-sizing: border-box;
-
   background:
     linear-gradient(
       180deg,
       #fff8fb 0%,
       #ffffff 100%
     );
-
   color: #34252b;
-
   font-family:
     Inter,
     Arial,
@@ -32,51 +28,38 @@
 
 .success-heading {
   text-align: center;
-
-  margin-bottom: 40px;
+  margin-bottom: 16px;
 }
 
 .success-small-title {
-  margin: 0 0 10px;
-
+  margin: 0 0 5px;
   color: #8a315a;
-
-  font-size: 13px;
-
+  font-size: 11px;
   font-weight: 800;
-
-  letter-spacing: 4px;
-
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 
 .success-heading h1 {
   margin: 0;
-
   color: #2d1b24;
-
   font-family:
     Georgia,
     "Times New Roman",
     serif;
-
   font-size: clamp(
-    42px,
-    7vw,
-    70px
+    34px,
+    5vw,
+    48px
   );
-
   line-height: 1;
-
   font-weight: 700;
 }
 
 .success-subtitle {
-  margin: 14px 0 0;
-
+  margin: 7px 0 0;
   color: #a44c75;
-
-  font-size: 16px;
+  font-size: 14px;
 }
 
 
@@ -85,27 +68,18 @@
 ===================================================== */
 
 .truck-animation-box {
-  width: min(900px, 100%);
-
-  height: 300px;
-
-  margin: 0 auto 55px;
-
-  padding: 30px;
-
+  width: min(680px, 100%);
+  height: 200px;
+  margin: 0 auto 18px;
+  padding: 12px;
   box-sizing: border-box;
-
   overflow: hidden;
-
-  border-radius: 30px;
-
+  border-radius: 20px;
   background: #ffffff;
-
   border: 1px solid #f0dce6;
-
   box-shadow:
-    0 20px 55px
-    rgba(122, 40, 80, 0.12);
+    0 12px 30px
+    rgba(122, 40, 80, 0.08);
 }
 
 
@@ -115,15 +89,10 @@
 
 .delivery-scene {
   width: 100%;
-
   height: 100%;
-
   position: relative;
-
   overflow: hidden;
-
-  border-radius: 25px;
-
+  border-radius: 20px;
   background:
     linear-gradient(
       180deg,
@@ -141,14 +110,10 @@
 
 .scene-road {
   position: absolute;
-
   left: 0;
   right: 0;
-
-  bottom: 25px;
-
-  height: 55px;
-
+  bottom: 18px;
+  height: 50px;
   background:
     linear-gradient(
       180deg,
@@ -159,17 +124,11 @@
 
 .road-line {
   position: absolute;
-
-  top: 27px;
-
+  top: 24px;
   width: 60px;
-
   height: 4px;
-
   border-radius: 10px;
-
   background: #f2dca0;
-
   animation:
     roadMove
     0.8s
@@ -212,19 +171,16 @@
    TRUCK
 ===================================================== */
 
+
 .delivery-truck {
   position: absolute;
-
   left: -260px;
-
-  bottom: 70px;
-
+  bottom: 60px;
   width: 235px;
-
   height: 105px;
-
   z-index: 10;
-
+  transform: scale(0.55);
+  transform-origin: bottom center;
   animation:
     truckJourney
     9s
@@ -233,16 +189,9 @@
 }
 
 
-/*
-   0%   truck outside
-   22%  truck arrives
-   35%  truck stops
-   62%  truck waits
-   100% truck leaves
-*/
+
 
 @keyframes truckJourney {
-
   0% {
     left: -260px;
   }
@@ -271,29 +220,20 @@
 
 .truck-cargo {
   position: absolute;
-
   left: 0;
-
   bottom: 20px;
-
   width: 150px;
-
   height: 78px;
-
   border-radius:
     5px 3px 3px 5px;
-
   border: 2px solid #d3cbc0;
-
   background:
     linear-gradient(
       135deg,
       #fffefb,
       #e8e1d7
     );
-
   overflow: hidden;
-
   box-sizing: border-box;
 }
 
@@ -304,23 +244,15 @@
 
 .truck-brand {
   position: absolute;
-
   left: 14px;
-
   top: 12px;
-
   color: #7a2850;
-
   font-family:
     Georgia,
     serif;
-
   font-size: 14px;
-
   font-weight: 800;
-
   letter-spacing: 2px;
-
   z-index: 5;
 }
 
@@ -331,20 +263,13 @@
 
 .cargo-door {
   position: absolute;
-
   right: 8px;
-
   top: 10px;
-
   width: 48px;
-
   height: 55px;
-
   border:
     2px solid #cbc3b7;
-
   background: #f6f1e9;
-
   z-index: 4;
 }
 
@@ -355,41 +280,26 @@
 
 .loaded-box {
   position: absolute;
-
   z-index: 6;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   width: 30px;
-
   height: 25px;
-
   border:
     2px solid #9b633c;
-
   border-radius: 3px;
-
   box-sizing: border-box;
-
   color: #7a2850;
-
   font-size: 8px;
-
   font-weight: 900;
-
   background:
     linear-gradient(
       135deg,
       #edbb88,
       #c9804d
     );
-
   opacity: 0;
-
   animation:
     loadedBoxes
     9s
@@ -397,21 +307,13 @@
     infinite;
 }
 
-
-/* tape */
-
 .loaded-box::before {
   content: "";
-
   position: absolute;
-
   top: 0;
   bottom: 0;
-
   left: 11px;
-
   width: 5px;
-
   background:
     rgba(
       255,
@@ -420,9 +322,6 @@
       0.65
     );
 }
-
-
-/* box positions */
 
 .loaded-one {
   left: 15px;
@@ -444,15 +343,10 @@
   top: 20px;
 }
 
-
-/* boxes appear after loading */
-
 @keyframes loadedBoxes {
-
   0%,
   45% {
     opacity: 0;
-
     transform:
       translateY(12px)
       scale(0.8);
@@ -460,7 +354,6 @@
 
   48% {
     opacity: 1;
-
     transform:
       translateY(0)
       scale(1);
@@ -468,7 +361,6 @@
 
   62% {
     opacity: 1;
-
     transform:
       translateY(0)
       scale(1);
@@ -486,23 +378,17 @@
 
 .truck-cargo::after {
   content: "";
-
   position: absolute;
-
   left: 0;
   right: 0;
-
   bottom: 12px;
-
   height: 7px;
-
   background:
     linear-gradient(
       90deg,
       #dba331,
       #f1c24c
     );
-
   z-index: 8;
 }
 
@@ -513,22 +399,16 @@
 
 .truck-cabin {
   position: absolute;
-
   right: 0;
-
   bottom: 20px;
-
   width: 92px;
-
   height: 78px;
-
   background:
     linear-gradient(
       180deg,
       #fffefb,
       #e4ddd2
     );
-
   clip-path:
     polygon(
       25% 0,
@@ -538,7 +418,6 @@
       0 100%,
       0 20%
     );
-
   z-index: 5;
 }
 
@@ -549,17 +428,11 @@
 
 .cabin-window {
   position: absolute;
-
   left: 18px;
-
   top: 10px;
-
   width: 39px;
-
   height: 28px;
-
   border-radius: 4px;
-
   background:
     linear-gradient(
       135deg,
@@ -570,22 +443,16 @@
 
 .front-window {
   position: absolute;
-
   right: 5px;
-
   top: 10px;
-
   width: 22px;
-
   height: 28px;
-
   background:
     linear-gradient(
       135deg,
       #282a2c,
       #606467
     );
-
   border-radius: 3px;
 }
 
@@ -596,17 +463,11 @@
 
 .door-handle {
   position: absolute;
-
   right: 10px;
-
   top: 49px;
-
   width: 10px;
-
   height: 4px;
-
   border-radius: 5px;
-
   background: #77736d;
 }
 
@@ -617,19 +478,12 @@
 
 .truck-bumper {
   position: absolute;
-
   right: -5px;
-
   bottom: 20px;
-
   width: 10px;
-
   height: 15px;
-
   border-radius: 2px;
-
   background: #bdb5aa;
-
   z-index: 8;
 }
 
@@ -640,19 +494,12 @@
 
 .truck-headlight {
   position: absolute;
-
   right: -2px;
-
   bottom: 47px;
-
   width: 8px;
-
   height: 11px;
-
   border-radius: 50%;
-
   background: #fff2a5;
-
   box-shadow:
     0 0 15px
     rgba(
@@ -661,7 +508,6 @@
       90,
       0.9
     );
-
   z-index: 12;
 }
 
@@ -672,25 +518,15 @@
 
 .truck-wheel {
   position: absolute;
-
   bottom: 4px;
-
   width: 34px;
-
   height: 34px;
-
   border-radius: 50%;
-
   border: 4px solid #414141;
-
   background: #171717;
-
   z-index: 15;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 }
 
@@ -704,13 +540,9 @@
 
 .truck-wheel div {
   width: 12px;
-
   height: 12px;
-
   border-radius: 50%;
-
   background: #aaa;
-
   border: 3px solid #555;
 }
 
@@ -721,19 +553,14 @@
 
 .loader-person {
   position: absolute;
-
-  left: calc(50% + 115px);
-
-  bottom: 72px;
-
+  left: calc(50% + 100px);
+  bottom: 60px;
   width: 45px;
-
   height: 85px;
-
   z-index: 20;
-
   opacity: 0;
-
+  transform: scale(0.72);
+  transform-origin: bottom center;
   animation:
     personJourney
     9s
@@ -741,206 +568,155 @@
     infinite;
 }
 
-
 @keyframes personJourney {
-
   0% {
     opacity: 0;
-
     transform:
       translateX(110px);
   }
 
   22% {
     opacity: 0;
-
     transform:
       translateX(110px);
   }
 
   28% {
     opacity: 1;
-
     transform:
       translateX(80px);
   }
 
   35% {
     opacity: 1;
-
     transform:
       translateX(20px);
   }
 
   45% {
     opacity: 1;
-
     transform:
       translateX(0);
   }
 
   60% {
     opacity: 1;
-
     transform:
       translateX(0);
   }
 
   68% {
     opacity: 0;
-
     transform:
       translateX(20px);
   }
 
   100% {
     opacity: 0;
-
     transform:
       translateX(100px);
   }
 }
 
 
-/* head */
+/* HEAD */
 
 .loader-head {
   position: absolute;
-
   left: 15px;
-
   top: 0;
-
   width: 19px;
-
   height: 19px;
-
   border-radius: 50%;
-
   background: #d89b76;
-
   z-index: 5;
 }
 
 
-/* hair */
+/* HAIR */
 
 .loader-hair {
   position: absolute;
-
   left: 12px;
-
   top: -3px;
-
   width: 24px;
-
   height: 15px;
-
   border-radius:
     50% 50% 35% 35%;
-
   background: #38232b;
-
   z-index: 6;
 }
 
 
-/* body */
+/* BODY */
 
 .loader-body {
   position: absolute;
-
   left: 10px;
-
   top: 18px;
-
   width: 28px;
-
   height: 35px;
-
   border-radius:
     9px 9px 5px 5px;
-
   background:
     linear-gradient(
       180deg,
       #7a2850,
       #a64d76
     );
-
   color: #ffffff;
-
   font-size: 5px;
-
   font-weight: 800;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 }
 
 
-/* arms */
+/* ARMS */
 
 .loader-arm {
   position: absolute;
-
   top: 23px;
-
   width: 27px;
-
   height: 7px;
-
   border-radius: 8px;
-
   background: #d89b76;
-
   transform-origin: left center;
 }
 
 .arm-left {
   left: 5px;
-
   transform:
     rotate(25deg);
 }
 
 .arm-right {
   left: 27px;
-
   transform:
     rotate(145deg);
 }
 
 
-/* legs */
+/* LEGS */
 
 .loader-leg {
   position: absolute;
-
   top: 49px;
-
   width: 8px;
-
   height: 34px;
-
   border-radius: 8px;
-
   background: #29252a;
 }
 
 .leg-left {
   left: 12px;
-
   transform:
     rotate(8deg);
 }
 
 .leg-right {
   left: 27px;
-
   transform:
     rotate(-8deg);
 }
@@ -952,45 +728,30 @@
 
 .carrying-box {
   position: absolute;
-
-  left: calc(50% + 75px);
-
-  bottom: 92px;
-
+  left: calc(50% + 65px);
+  bottom: 76px;
   width: 34px;
-
   height: 29px;
-
   z-index: 30;
-
   opacity: 0;
-
+  transform: scale(0.72);
+  transform-origin: bottom center;
   border:
     2px solid #945d38;
-
   border-radius: 3px;
-
   box-sizing: border-box;
-
   background:
     linear-gradient(
       135deg,
       #efbb87,
       #c77d49
     );
-
   color: #7a2850;
-
   font-size: 8px;
-
   font-weight: 900;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   animation:
     boxLoading
     9s
@@ -998,20 +759,12 @@
     infinite;
 }
 
-
-/* tape */
-
 .box-tape {
   position: absolute;
-
   left: 12px;
-
   top: 0;
-
   bottom: 0;
-
   width: 6px;
-
   background:
     rgba(
       255,
@@ -1021,93 +774,57 @@
     );
 }
 
-
-/* box label */
-
 .carrying-box span {
   position: relative;
-
   z-index: 5;
 }
 
-
-/*
-   BOX:
-
-   outside person
-       ↓
-   person carries
-       ↓
-   reaches truck
-       ↓
-   rises into cargo
-*/
-
 @keyframes boxLoading {
-
   0%,
   27% {
     opacity: 0;
-
     left: calc(50% + 115px);
-
     bottom: 90px;
-
     transform:
       rotate(0deg);
   }
 
   32% {
     opacity: 1;
-
     left: calc(50% + 80px);
-
     bottom: 92px;
-
     transform:
       rotate(-3deg);
   }
 
   40% {
     opacity: 1;
-
     left: calc(50% + 40px);
-
     bottom: 93px;
-
     transform:
       rotate(0deg);
   }
 
   47% {
     opacity: 1;
-
     left: calc(50% + 5px);
-
     bottom: 110px;
-
     transform:
       rotate(0deg);
   }
 
   53% {
     opacity: 1;
-
     left: calc(50% - 55px);
-
     bottom: 125px;
-
     transform:
       scale(0.85);
   }
 
   59% {
     opacity: 0;
-
     left: calc(50% - 65px);
-
     bottom: 135px;
-
     transform:
       scale(0.7);
   }
@@ -1124,46 +841,33 @@
 
 .success-content {
   width: min(720px, 100%);
-
   margin: 0 auto;
-
   text-align: center;
 }
 
 
-/* success tick */
+/* SUCCESS TICK */
 
 .success-icon {
-  width: 60px;
-
-  height: 60px;
-
+  width: 48px;
+  height: 48px;
   margin:
-    0 auto 16px;
-
+    0 auto 8px;
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   border-radius: 50%;
-
   color: #ffffff;
-
   background:
     linear-gradient(
       135deg,
       #7a2850,
       #b85b82
     );
-
-  font-size: 28px;
-
+  font-size: 22px;
   font-weight: 800;
-
   box-shadow:
-    0 10px 25px
+    0 8px 20px
     rgba(
       122,
       40,
@@ -1174,47 +878,36 @@
 
 
 .eyebrow {
-  margin: 0 0 8px;
-
+  margin: 0 0 5px;
   color: #a44c75;
-
-  font-size: 12px;
-
+  font-size: 11px;
   font-weight: 800;
-
-  letter-spacing: 2px;
-
+  letter-spacing: 1.5px;
   text-transform: uppercase;
 }
 
 
 .success-content h2 {
   margin:
-    0 0 12px;
-
+    0 0 7px;
   color: #2d1b24;
-
   font-family:
     Georgia,
     "Times New Roman",
     serif;
-
   font-size: clamp(
-    28px,
-    5vw,
-    42px
+    24px,
+    4vw,
+    34px
   );
 }
 
 
 .success-message {
-  margin: 5px 0;
-
+  margin: 3px 0;
   color: #777777;
-
-  font-size: 15px;
-
-  line-height: 1.6;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 
@@ -1224,51 +917,37 @@
 
 .order-info {
   display: grid;
-
   grid-template-columns:
     repeat(3, 1fr);
-
-  gap: 12px;
-
+  gap: 10px;
   margin:
-    30px 0;
-
-  padding: 20px;
-
+    14px 0;
+  padding: 12px 15px;
   background: #fff8fb;
-
   border:
     1px solid #f0dce6;
-
-  border-radius: 18px;
+  border-radius: 14px;
 }
 
 
 .order-info-item {
   display: flex;
-
   flex-direction: column;
-
-  gap: 7px;
+  gap: 4px;
 }
 
 
 .order-info-item span {
   color: #999999;
-
-  font-size: 11px;
-
-  letter-spacing: 1px;
-
+  font-size: 9px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
 }
 
 
 .order-info-item strong {
   color: #7a2850;
-
-  font-size: 14px;
-
+  font-size: 12px;
   word-break: break-word;
 }
 
@@ -1279,13 +958,10 @@
 
 .email-message {
   margin:
-    25px 0;
-
+    10px 0;
   color: #777777;
-
-  font-size: 14px;
-
-  line-height: 1.6;
+  font-size: 12px;
+  line-height: 1.4;
 }
 
 
@@ -1295,28 +971,17 @@
 
 .continue-shopping {
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
-
-  gap: 10px;
-
+  gap: 8px;
   padding:
-    13px 25px;
-
+    10px 20px;
   color: #ffffff;
-
   background: #7a2850;
-
   text-decoration: none;
-
-  border-radius: 12px;
-
-  font-size: 14px;
-
+  border-radius: 10px;
+  font-size: 13px;
   font-weight: 700;
-
   transition:
     0.3s ease;
 }
@@ -1324,12 +989,10 @@
 
 .continue-shopping:hover {
   background: #5f1e3d;
-
   transform:
-    translateY(-3px);
-
+    translateY(-2px);
   box-shadow:
-    0 10px 25px
+    0 8px 20px
     rgba(
       122,
       40,
@@ -1340,8 +1003,7 @@
 
 
 .continue-shopping span {
-  font-size: 20px;
-
+  font-size: 18px;
   transition:
     transform 0.3s ease;
 }
@@ -1361,19 +1023,28 @@
 
   .order-success {
     padding:
-      50px 15px 80px;
+      25px 15px 30px;
+  }
+
+  .success-heading {
+    margin-bottom: 14px;
   }
 
   .truck-animation-box {
-    height: 260px;
-
-    padding: 20px;
+    height: 190px;
+    padding: 10px;
+    margin-bottom: 15px;
   }
 
   .order-info {
     grid-template-columns: 1fr;
+    gap: 7px;
+    padding: 11px 13px;
   }
 
+  .order-info-item {
+    gap: 3px;
+  }
 }
 
 
@@ -1385,45 +1056,83 @@
 
   .order-success {
     padding:
-      40px 12px 70px;
+      22px 12px 25px;
+  }
+
+  .success-small-title {
+    font-size: 9px;
+    letter-spacing: 2px;
   }
 
   .success-heading h1 {
-    font-size: 40px;
+    font-size: 32px;
   }
 
   .success-subtitle {
-    font-size: 14px;
+    margin-top: 6px;
+    font-size: 12px;
   }
 
   .truck-animation-box {
-    height: 220px;
+    height: 170px;
+    padding: 8px;
+    margin-bottom: 13px;
+    border-radius: 17px;
+  }
 
-    padding: 12px;
-
-    border-radius: 22px;
+  .delivery-scene {
+    border-radius: 15px;
   }
 
   .delivery-truck {
     transform:
-      scale(0.75);
-
+      scale(0.62);
     transform-origin:
       bottom left;
   }
 
   .loader-person {
     transform:
-      scale(0.75);
+      scale(0.62);
   }
 
   .carrying-box {
     transform:
-      scale(0.8);
+      scale(0.65);
+  }
+
+  .success-icon {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 7px;
+    font-size: 19px;
+  }
+
+  .success-content h2 {
+    font-size: 23px;
+    margin-bottom: 6px;
+  }
+
+  .success-message {
+    font-size: 11px;
+    line-height: 1.35;
   }
 
   .order-info {
-    padding: 15px;
+    margin: 11px 0;
+    padding: 10px 12px;
+    border-radius: 12px;
   }
 
+  .email-message {
+    margin: 8px 0;
+    font-size: 11px;
+  }
+
+  .continue-shopping {
+    padding:
+      9px 17px;
+    font-size: 12px;
+  }
 }
+
