@@ -88,6 +88,8 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
@@ -98,6 +100,8 @@ body {
   font-family: "DM Sans", sans-serif;
   line-height: 1.5;
   overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 body::selection {

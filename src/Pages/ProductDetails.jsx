@@ -141,13 +141,12 @@ export default function ProductDetails() {
     <main
       className="product-details-page"
       style={{
-        maxWidth: "1240px",
+        maxWidth: "1200px",
         margin: "0 auto",
-        padding: "30px 24px 80px",
-        color: "var(--text-main)",
+        padding: "clamp(16px, 4vw, 40px) clamp(12px, 3vw, 24px) 100px",
       }}
     >
-      {/* BREADCRUMB NAVIGATION */}
+      {/* BREADCRUMB */}
       <div
         style={{
           display: "flex",
@@ -155,7 +154,7 @@ export default function ProductDetails() {
           gap: "8px",
           fontSize: "13px",
           color: "var(--text-muted)",
-          marginBottom: "28px",
+          marginBottom: "32px",
           flexWrap: "wrap",
         }}
       >
@@ -176,10 +175,11 @@ export default function ProductDetails() {
 
       {/* PRODUCT SHOWCASE GRID */}
       <div
+        className="product-showcase-grid"
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-          gap: "50px",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+          gap: "clamp(24px, 4vw, 50px)",
           alignItems: "start",
           marginBottom: "60px",
         }}
@@ -189,11 +189,11 @@ export default function ProductDetails() {
           className="product-details-image"
           style={{
             background: "var(--bg-card)",
-            borderRadius: "32px",
+            borderRadius: "clamp(20px, 4vw, 32px)",
             border: "1.5px solid var(--border-color)",
-            padding: "36px",
+            padding: "clamp(18px, 4vw, 36px)",
             position: "relative",
-            minHeight: "420px",
+            minHeight: "clamp(260px, 40vw, 420px)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -363,7 +363,7 @@ export default function ProductDetails() {
           </p>
 
           {/* QUANTITY & ACTIONS */}
-          <div style={{ display: "flex", gap: "16px", alignItems: "center", flexWrap: "wrap", marginBottom: "28px" }}>
+          <div className="product-actions-row" style={{ display: "flex", gap: "12px", alignItems: "center", flexWrap: "wrap", marginBottom: "28px" }}>
             {/* Quantity Selector */}
             <div
               style={{
@@ -428,7 +428,7 @@ export default function ProductDetails() {
               onClick={handleAddToCart}
               disabled={isOutOfStock}
               style={{
-                padding: "15px 36px",
+                padding: "15px 32px",
                 fontSize: "15px",
                 fontWeight: "800",
                 display: "inline-flex",
@@ -453,7 +453,7 @@ export default function ProductDetails() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "8px",
-                padding: "14px 24px",
+                padding: "14px 22px",
                 borderRadius: "999px",
                 background: "#25d366",
                 color: "#ffffff",
@@ -470,11 +470,12 @@ export default function ProductDetails() {
 
           {/* PERKS LIST */}
           <div
+            className="product-perks-list"
             style={{
               display: "grid",
-              gridTemplateColumns: "1fr 1fr",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 180px), 1fr))",
               gap: "14px",
-              padding: "20px",
+              padding: "clamp(14px, 3vw, 20px)",
               background: "var(--bg-surface)",
               borderRadius: "20px",
               border: "1px solid var(--border-color)",

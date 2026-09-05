@@ -268,3 +268,30 @@
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 600px) {
+  .checkout-page {
+    padding: 24px 12px 100px;
+  }
+
+  .checkout-section {
+    padding: 20px 14px;
+    border-radius: 16px;
+  }
+
+  .checkout-summary {
+    padding: 20px 14px;
+    border-radius: 16px;
+    position: static;
+  }
+
+  .checkout-login {
+    padding: 32px 16px;
+    margin: 24px auto;
+    border-radius: 18px;
+  }
+
+  .checkout-section .payment-option {
+    padding: 12px 12px;
+  }
+}

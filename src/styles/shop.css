@@ -557,3 +557,24 @@
     align-items: stretch;
   }
 }
+
+@media (max-width: 480px) {
+  .shop-page-wrapper {
+    padding: 12px 10px 70px;
+  }
+
+  .shop-category-banner {
+    padding: 20px 16px;
+    border-radius: 18px;
+    margin-bottom: 20px;
+  }
+
+  .category-banner-title {
+    font-size: 22px;
+  }
+
+  .catalog-toolbar {
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+}

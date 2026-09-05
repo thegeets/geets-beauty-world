@@ -213,23 +213,27 @@
 
 
 /* ========================================
-   MOBILE
+   MOBILE & RESPONSIVE
 ======================================== */
 
-@media (max-width: 600px) {
-
+@media (max-width: 900px) {
   .floating-cart-wrapper {
-    right: 16px;
-    bottom: 18px;
-    left: 16px;
+    right: 14px;
+    bottom: 82px;
+    left: 14px;
   }
 
   .floating-cart {
     width: 100%;
-
     min-width: 0;
-
     box-sizing: border-box;
   }
+}
 
+@media (max-width: 480px) {
+  .floating-cart-wrapper {
+    right: 10px;
+    bottom: 76px;
+    left: 10px;
+  }
 }

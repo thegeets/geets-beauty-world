@@ -245,3 +245,13 @@
     text-align: center;
   }
 }
+
+@media (max-width: 480px) {
+  .site-footer {
+    padding: 32px 14px 28px;
+  }
+  .footer-perk-item {
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+}

@@ -188,6 +188,7 @@ export default function LoginModal({ isOpen, onClose }) {
               SIGN UP = RIGHT
           ================================================= */}
           <div
+            className="geets-form-panel"
             style={{
               position: "absolute",
               top: 0,
@@ -543,6 +544,7 @@ export default function LoginModal({ isOpen, onClose }) {
               SIGN UP = LEFT
           ===================================================== */}
           <div
+            className="geets-welcome-panel"
             style={{
               position: "absolute",
               top: 0,
@@ -788,17 +790,42 @@ export default function LoginModal({ isOpen, onClose }) {
 
           @media (max-width: 750px) {
             .geets-login-card {
-              width: 95vw !important;
-              height: 90vh !important;
-              max-height: 90vh !important;
+              width: min(480px, 94vw) !important;
+              height: auto !important;
+              max-height: 92vh !important;
               overflow-y: auto !important;
+              border-radius: 24px !important;
+            }
+
+            .geets-welcome-panel {
+              display: none !important;
+            }
+
+            .geets-form-panel {
+              position: relative !important;
+              width: 100% !important;
+              left: 0 !important;
+              top: 0 !important;
+              height: auto !important;
+              padding: 36px 28px !important;
             }
           }
 
-          @media (max-width: 600px) {
+          @media (max-width: 480px) {
             .geets-login-card {
-              height: auto !important;
-              min-height: 650px !important;
+              width: 95vw !important;
+              max-height: 94vh !important;
+              border-radius: 20px !important;
+            }
+
+            .geets-form-panel {
+              padding: 30px 18px !important;
+            }
+          }
+
+          @media (max-width: 360px) {
+            .geets-form-panel {
+              padding: 26px 14px !important;
             }
           }
         `}
