@@ -1326,8 +1326,8 @@
   /* Mobile Header Container */
   .header-main {
     height: 74px;
-    padding: 0 20px;
-    gap: 12px;
+    padding: 0 16px;
+    gap: 10px;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
@@ -1336,20 +1336,31 @@
   }
 
   .site-header.is-scrolled .header-main {
-    height: 68px;
+    height: 66px;
   }
 
   /* Brand Logo on the LEFT */
   .brand-logo-container {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
+    flex-shrink: 1 !important;
+    display: flex !important;
+    align-items: center !important;
     gap: 10px;
-    min-width: 0;
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .brand-text {
+    min-width: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .brand-name {
+    white-space: nowrap !important;
   }
 
   /* Right-Side Action Icons Container: [ ❤️ ] [ 👤 ] [ ⋮ ] */
-  .header-actions {
+  .header-actions,
+  .site-header.is-scrolled .header-actions {
     margin-left: auto !important;
     display: flex !important;
     flex-direction: row !important;
@@ -1357,25 +1368,33 @@
     justify-content: flex-end !important;
     flex-wrap: nowrap !important;
     gap: 8px;
-    flex-shrink: 0;
+    flex-shrink: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   /* 1. WISHLIST BUTTON */
-  .header-icon-btn.wishlist-nav-btn {
+  .header-icon-btn.wishlist-nav-btn,
+  .site-header.is-scrolled .header-icon-btn.wishlist-nav-btn {
     display: flex !important;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    order: 1;
-    flex-shrink: 0;
+    order: 1 !important;
+    flex-shrink: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   /* 2. USER / SIGN IN BUTTON */
-  .user-profile-menu {
+  .user-profile-menu,
+  .site-header.is-scrolled .user-profile-menu {
     display: flex !important;
-    position: relative;
-    order: 2;
-    flex-shrink: 0;
+    position: relative !important;
+    order: 2 !important;
+    flex-shrink: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   .profile-avatar-btn {
@@ -1384,7 +1403,8 @@
     border-radius: 50%;
   }
 
-  .header-signin-btn {
+  .header-signin-btn,
+  .site-header.is-scrolled .header-signin-btn {
     display: flex !important;
     width: 40px;
     height: 40px;
@@ -1393,42 +1413,49 @@
     justify-content: center !important;
     align-items: center !important;
     gap: 0;
-    order: 2;
-    flex-shrink: 0;
+    order: 2 !important;
+    flex-shrink: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   .signin-btn-text {
     display: none !important;
   }
 
-  /* 3. THREE-DOT BUTTON & WRAPPER */
-  .mobile-menu-wrapper {
-    position: relative;
+  /* 3. THREE-DOT BUTTON & WRAPPER - ALWAYS VISIBLE */
+  .mobile-menu-wrapper,
+  .site-header.is-scrolled .mobile-menu-wrapper {
+    position: relative !important;
     display: flex !important;
-    align-items: center;
-    justify-content: center;
-    order: 3;
-    flex-shrink: 0;
-    z-index: 1600;
+    align-items: center !important;
+    justify-content: center !important;
+    order: 3 !important;
+    flex-shrink: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 1600 !important;
   }
 
-  .mobile-three-dot-menu {
+  .mobile-three-dot-menu,
+  .site-header.is-scrolled .mobile-three-dot-menu {
     display: flex !important;
     width: 40px;
     height: 40px;
-    padding: 0;
-    margin: 0;
-    align-items: center;
-    justify-content: center;
+    padding: 0 !important;
+    margin: 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
     border: 1px solid var(--border-subtle, rgba(42, 23, 29, 0.08));
     border-radius: 50%;
     background: var(--bg-card, #ffffff);
     color: var(--text-main, #2a171d);
     cursor: pointer;
-    flex-shrink: 0;
+    flex-shrink: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     box-shadow: var(--shadow-sm, 0 4px 12px rgba(0, 0, 0, 0.08));
-    transition:
-      all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .mobile-three-dot-menu:hover,

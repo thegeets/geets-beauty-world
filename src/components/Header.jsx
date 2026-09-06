@@ -156,6 +156,14 @@ export default function Header({ onOpenLogin }) {
   };
 
   /* =====================================================
+     MOBILE NAVIGATION HANDLER (RELIABLE ROUTING)
+  ===================================================== */
+  const handleMobileNav = (path) => {
+    setIsDrawerOpen(false);
+    navigate(path);
+  };
+
+  /* =====================================================
      CLOSE MOBILE POPUP
   ===================================================== */
   const closeMobileMenu = () => {
@@ -801,7 +809,10 @@ export default function Header({ onOpenLogin }) {
                     <Link
                       to="/wishlist"
                       className="mobile-simple-menu-item"
-                      onClick={closeMobileMenu}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleMobileNav("/wishlist");
+                      }}
                     >
                       <span className="mobile-menu-item-icon wishlist">
                         <Heart size={17} color="#e11d48" />
@@ -823,7 +834,10 @@ export default function Header({ onOpenLogin }) {
                       <Link
                         to="/profile"
                         className="mobile-simple-menu-item"
-                        onClick={closeMobileMenu}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleMobileNav("/profile");
+                        }}
                       >
                         <span className="mobile-menu-item-icon user">
                           <User size={17} color="var(--primary)" />
@@ -850,15 +864,13 @@ export default function Header({ onOpenLogin }) {
                     )}
 
                     {/* 🏠 Home */}
-                    <NavLink
+                    <Link
                       to="/"
-                      end
-                      className={({ isActive }) =>
-                        `mobile-simple-menu-item ${
-                          isActive ? "active-mobile-link" : ""
-                        }`
-                      }
-                      onClick={closeMobileMenu}
+                      className="mobile-simple-menu-item"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleMobileNav("/");
+                      }}
                     >
                       <span className="mobile-menu-item-icon home">
                         <HomeIcon size={17} />
@@ -867,17 +879,16 @@ export default function Header({ onOpenLogin }) {
                       <span className="mobile-menu-item-text">
                         Home
                       </span>
-                    </NavLink>
+                    </Link>
 
                     {/* 🛍 Shop */}
-                    <NavLink
+                    <Link
                       to="/shop"
-                      className={({ isActive }) =>
-                        `mobile-simple-menu-item ${
-                          isActive ? "active-mobile-link" : ""
-                        }`
-                      }
-                      onClick={closeMobileMenu}
+                      className="mobile-simple-menu-item"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleMobileNav("/shop");
+                      }}
                     >
                       <span className="mobile-menu-item-icon shop">
                         <ShoppingBag size={17} />
@@ -886,17 +897,16 @@ export default function Header({ onOpenLogin }) {
                       <span className="mobile-menu-item-text">
                         Shop
                       </span>
-                    </NavLink>
+                    </Link>
 
                     {/* ℹ About */}
-                    <NavLink
+                    <Link
                       to="/about"
-                      className={({ isActive }) =>
-                        `mobile-simple-menu-item ${
-                          isActive ? "active-mobile-link" : ""
-                        }`
-                      }
-                      onClick={closeMobileMenu}
+                      className="mobile-simple-menu-item"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleMobileNav("/about");
+                      }}
                     >
                       <span className="mobile-menu-item-icon about">
                         <Info size={17} />
@@ -905,17 +915,16 @@ export default function Header({ onOpenLogin }) {
                       <span className="mobile-menu-item-text">
                         About
                       </span>
-                    </NavLink>
+                    </Link>
 
                     {/* 📞 Contact */}
-                    <NavLink
+                    <Link
                       to="/contact"
-                      className={({ isActive }) =>
-                        `mobile-simple-menu-item ${
-                          isActive ? "active-mobile-link" : ""
-                        }`
-                      }
-                      onClick={closeMobileMenu}
+                      className="mobile-simple-menu-item"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleMobileNav("/contact");
+                      }}
                     >
                       <span className="mobile-menu-item-icon contact">
                         <Phone size={17} />
@@ -924,7 +933,7 @@ export default function Header({ onOpenLogin }) {
                       <span className="mobile-menu-item-text">
                         Contact
                       </span>
-                    </NavLink>
+                    </Link>
                   </div>
                 </div>
               )}
