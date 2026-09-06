@@ -98,6 +98,7 @@ export default function Shop() {
   useEffect(() => {
     setCategory(queryCategory);
     setSubcategory(querySubcategory);
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [queryCategory, querySubcategory]);
 
   // =========================================

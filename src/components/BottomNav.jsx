@@ -18,6 +18,7 @@ export default function BottomNav({ onOpenSearch, onOpenLogin }) {
         className={({ isActive }) =>
           `bottom-nav-btn ${isActive ? "active" : ""}`
         }
+        onClick={() => window.scrollTo(0, 0)}
         end
       >
         <div className="bottom-icon-container">
@@ -31,6 +32,7 @@ export default function BottomNav({ onOpenSearch, onOpenLogin }) {
         className={({ isActive }) =>
           `bottom-nav-btn ${isActive ? "active" : ""}`
         }
+        onClick={() => window.scrollTo(0, 0)}
       >
         <div className="bottom-icon-container">
           <LayoutGrid size={20} />
@@ -55,6 +57,7 @@ export default function BottomNav({ onOpenSearch, onOpenLogin }) {
         className={({ isActive }) =>
           `bottom-nav-btn ${isActive ? "active" : ""}`
         }
+        onClick={() => window.scrollTo(0, 0)}
       >
         <div className="bottom-icon-container">
           <Heart size={20} />
@@ -72,6 +75,7 @@ export default function BottomNav({ onOpenSearch, onOpenLogin }) {
         className={({ isActive }) =>
           `bottom-nav-btn ${isActive ? "active" : ""}`
         }
+        onClick={() => window.scrollTo(0, 0)}
       >
         <div className="bottom-icon-container">
           <ShoppingBag size={20} />

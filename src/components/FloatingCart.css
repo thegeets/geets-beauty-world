@@ -17,6 +17,7 @@
 }
 
 
+
 /* ========================================
    MAIN BAR
 ======================================== */
@@ -235,5 +236,28 @@
     right: 10px;
     bottom: 76px;
     left: 10px;
+  }
+}
+/* ========================================
+   MOBILE FLOATING CART - ALWAYS VISIBLE
+======================================== */
+
+@media (max-width: 900px) {
+  .floating-cart-wrapper {
+    position: fixed !important;
+    right: 14px !important;
+    bottom: 82px !important;
+    left: 14px !important;
+    z-index: 99999 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-cart-wrapper {
+    position: fixed !important;
+    right: 10px !important;
+    bottom: 76px !important;
+    left: 10px !important;
+    z-index: 99999 !important;
   }
 }

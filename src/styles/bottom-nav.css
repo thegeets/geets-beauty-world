@@ -41,6 +41,13 @@
   position: relative;
   flex: 1;
   max-width: 68px;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.bottom-nav-btn * {
+  pointer-events: none;
 }
 
 .bottom-icon-container {
@@ -119,7 +126,7 @@
 }
 
 /* Responsive Display */
-@media (max-width: 900px) {
+@media (max-width: 980px) {
   .bottom-nav-bar {
     display: flex;
   }

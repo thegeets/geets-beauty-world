@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 
 // Store Components (Customer)
@@ -44,12 +44,23 @@ import { ProductProvider } from "./context/ProductContext.jsx";
 import { WishlistProvider } from "./context/WishlistContext.jsx";
 import { OrderProvider } from "./context/OrderContext.jsx";
 
+function ScrollToTop() {
+  const { pathname, search } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [pathname, search]);
+
+  return null;
+}
+
 function CustomerLayout() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
     <>
+      <ScrollToTop />
       <Header onOpenLogin={() => setIsLoginOpen(true)} />
 
       <Routes>

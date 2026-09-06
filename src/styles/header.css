@@ -2113,6 +2113,10 @@ gap: 14px;
 .header-actions {
 gap: 10px;
 }
+
+.header-actions .cart-button {
+display: none !important;
+}
 }
 
 /* 4. Large Mobile / Phablets (max-width: 768px) */
