@@ -181,11 +181,11 @@ width: 100%;
 max-width: 1400px;
 margin: 0 auto;
 height: 84px;
-padding: 0 32px;
+padding: 0 clamp(16px, 2.5vw, 32px);
 display: flex;
 align-items: center;
 justify-content: space-between;
-gap: 28px;
+gap: clamp(10px, 1.8vw, 24px);
 box-sizing: border-box;
 transition:
 height 0.3s cubic-bezier(
@@ -913,15 +913,17 @@ gap: 10px;
 display: flex;
 align-items: center;
 justify-content: flex-end;
-gap: 12px;
+gap: clamp(6px, 0.9vw, 12px);
 flex-shrink: 0;
 }
 
 .header-search-bar-btn {
 display: inline-flex;
 align-items: center;
-gap: 10px;
-padding: 8px 16px;
+gap: 8px;
+max-width: 250px;
+flex-shrink: 1;
+padding: 8px clamp(10px, 1.2vw, 16px);
 height: 42px;
 background:
 var(--bg-surface, #f7ebea);
@@ -2013,26 +2015,32 @@ background: #fecaca;
 RESPONSIVE MEDIA QUERIES
 ========================================= */
 
-/* 1. Large Laptops & Small Desktops (max-width: 1200px) */
+/* 1. Large Laptops & Small Desktops (max-width: 1350px) */
 
-@media (max-width: 1200px) {
+@media (max-width: 1350px) {
 
 .header-main {
-padding: 0 32px;
-gap: 20px;
-}
-
-.desktop-nav {
+padding: 0 20px;
 gap: 16px;
 }
 
+.desktop-nav {
+gap: 12px;
+}
+
 .nav-link {
-padding: 8px 14px;
-font-size: 14.5px;
+padding: 7px 11px;
+font-size: 13.5px;
 }
 
 .header-actions {
-gap: 12px;
+gap: 8px;
+}
+
+.search-text-placeholder {
+max-width: 140px;
+overflow: hidden;
+text-overflow: ellipsis;
 }
 
 .mega-menu-flyout {
@@ -2041,30 +2049,34 @@ max-width: 90vw;
 }
 }
 
-/* 2. Tablet Landscape / Small Laptop (max-width: 1050px) */
+/* 2. Tablet Landscape / Small Laptop (max-width: 1100px) */
 
-@media (max-width: 1050px) {
+@media (max-width: 1100px) {
 
 .desktop-nav {
-gap: 10px;
+gap: 8px;
 }
 
 .nav-link {
-padding: 7px 10px;
-font-size: 13.5px;
+padding: 6px 8px;
+font-size: 13px;
 }
 
 .brand-logo-container {
-gap: 10px;
+gap: 8px;
 }
 
 .brand-name {
-font-size: 22px;
+font-size: 20px;
 }
 
 .header-signin-btn {
-padding: 8px 14px;
+padding: 7px 12px;
 font-size: 12px;
+}
+
+.header-search-bar-btn .search-keyboard-hint {
+display: none;
 }
 }
 

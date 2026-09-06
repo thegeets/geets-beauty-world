@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -22,8 +22,29 @@ export default function ProductCard({
   const { addToast } = useToast();
 
   const [isAdded, setIsAdded] = useState(false);
+  const [isMobileActive, setIsMobileActive] = useState(false);
+  const cardRef = useRef(null);
 
   const isWishlisted = isInWishlist(product?.id);
+
+  /* Close mobile action bar on outside click/tap */
+  useEffect(() => {
+    if (!isMobileActive) return;
+
+    const handleOutsideClick = (e) => {
+      if (cardRef.current && !cardRef.current.contains(e.target)) {
+        setIsMobileActive(false);
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+    document.addEventListener("touchend", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+      document.removeEventListener("touchend", handleOutsideClick);
+    };
+  }, [isMobileActive]);
 
   if (!product) return null;
 
@@ -303,17 +324,45 @@ export default function ProductCard({
     currentStock === 0;
 
   /* ========================================
+     MOBILE TOUCH / TAP TOGGLE
+  ======================================== */
+
+  const handleImageClick = (e) => {
+    if (window.innerWidth <= 768) {
+      if (
+        e.target.closest(".product-wishlist-btn") ||
+        e.target.closest(".image-add-to-cart-btn")
+      ) {
+        return;
+      }
+
+      if (!isMobileActive) {
+        e.preventDefault();
+        setIsMobileActive(true);
+      } else {
+        e.preventDefault();
+        setIsMobileActive(false);
+      }
+    }
+  };
+
+  /* ========================================
      UI
   ======================================== */
 
   return (
     <div
+      ref={cardRef}
       className={`product-card ${
+        enableHover ? "home-hover-card" : "shop-standard-card"
+      } ${
         hasHoverImage
           ? "hover-enabled has-hover-image"
           : ""
       } ${
         isAdded ? "is-product-added" : ""
+      } ${
+        isMobileActive ? "is-mobile-active" : ""
       }`}
       tabIndex="0"
     >
@@ -347,6 +396,7 @@ export default function ProductCard({
       <div className="product-image-link">
         <Link
           to={`/product/${product.id}`}
+          onClick={handleImageClick}
         >
           <div className="product-image-container">
 

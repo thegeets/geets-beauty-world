@@ -781,6 +781,7 @@ export default function Shop() {
           {filteredProducts.length > 0 ? (
             <ProductGrid
               products={filteredProducts}
+              enableHover={false}
             />
           ) : (
             <div

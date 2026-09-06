@@ -2,7 +2,7 @@ import ProductCard from "./ProductCard";
 
 export default function ProductGrid({
   products,
-  enableHover = true,
+  enableHover = false,
 }) {
   if (!products || products.length === 0) {
     return (

@@ -78,13 +78,6 @@ export default function Cart() {
             Continue Shopping
           </Link>
         </div>
-
-        <button
-          type="button"
-          className="cart-chat"
-        >
-          💬
-        </button>
       </main>
     );
   }
@@ -305,14 +298,6 @@ export default function Cart() {
         </aside>
 
       </section>
-
-      {/* CHAT */}
-      <button
-        type="button"
-        className="cart-chat"
-      >
-        💬
-      </button>
 
     </main>
   );

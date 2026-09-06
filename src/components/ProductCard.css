@@ -108,8 +108,7 @@
 
 .product-card:hover .product-wishlist-btn,
 .product-card:focus-within .product-wishlist-btn,
-.product-card:active .product-wishlist-btn,
-.product-wishlist-btn.is-active {
+.product-card.is-mobile-active .product-wishlist-btn {
 
   opacity: 1;
 
@@ -131,12 +130,6 @@
 
   box-shadow:
     0 8px 25px rgba(239, 68, 68, 0.5) !important;
-
-  opacity: 1 !important;
-
-  pointer-events: auto !important;
-
-  transform: scale(1) !important;
 }
 
 .product-wishlist-btn:hover {
@@ -309,92 +302,39 @@
 }
 
 /* ========================================
-   CLEAR SLOW ZOOM
+   HOME PAGE HOVER EFFECTS ONLY
 ======================================== */
 
-.product-card:hover .product-image,
-.product-card:focus-within .product-image,
-.product-card:hover .product-hover-image,
-.product-card:focus-within .product-hover-image {
-
+.product-card.home-hover-card:hover .product-image,
+.product-card.home-hover-card:focus-within .product-image,
+.product-card.home-hover-card:hover .product-hover-image,
+.product-card.home-hover-card:focus-within .product-hover-image {
   transform: scale(1.18);
 }
 
-/* ========================================
-   KEEP IMAGE CENTERED
-======================================== */
-
-.product-card:hover .product-image-stage,
-.product-card:focus-within .product-image-stage {
-
+.product-card.home-hover-card:hover .product-image-stage,
+.product-card.home-hover-card:focus-within .product-image-stage {
   transform: translateY(0) translateZ(0);
 }
 
-/* ========================================
-   SMOOTH SHADOW ENHANCEMENT
-======================================== */
-
-.product-card:hover .product-image,
-.product-card:hover .product-hover-image {
-
-  filter:
-    drop-shadow(
-      0 18px 26px rgba(0, 0, 0, 0.16)
-    );
+.product-card.home-hover-card:hover .product-image,
+.product-card.home-hover-card:hover .product-hover-image {
+  filter: drop-shadow(0 18px 26px rgba(0, 0, 0, 0.16));
 }
 
-/* ========================================
-   HOVER IMAGE SWAP
-======================================== */
-
-.product-card.has-hover-image:hover .product-image,
-.product-card.has-hover-image:focus-within .product-image {
-
+.product-card.home-hover-card.has-hover-image:hover .product-image,
+.product-card.home-hover-card.has-hover-image:focus-within .product-image {
   opacity: 0;
 }
 
-.product-card.has-hover-image:hover .product-hover-image,
-.product-card.has-hover-image:focus-within .product-hover-image {
+.product-card.home-hover-card.has-hover-image:hover .product-hover-image,
+.product-card.home-hover-card.has-hover-image:focus-within .product-hover-image {
   opacity: 1;
 }
 
-/* ========================================
-   KEEP IMAGE CENTERED
-======================================== */
-
-.product-card:hover .product-image-stage,
-.product-card:focus-within .product-image-stage {
-
-  transform: translateY(0) translateZ(0);
-}
-
-/* ========================================
-   SMOOTH SHADOW ENHANCEMENT
-======================================== */
-
-.product-card:hover .product-image,
-.product-card:hover .product-hover-image {
-
-  filter:
-    drop-shadow(
-      0 18px 26px rgba(0, 0, 0, 0.16)
-    );
-}
-
-/* ========================================
-   HOVER IMAGE SWAP
-======================================== */
-
-.product-card.has-hover-image:hover .product-image,
-.product-card.has-hover-image:focus-within .product-image {
-
-  opacity: 0;
-}
-
-.product-card.has-hover-image:hover .product-hover-image,
-.product-card.has-hover-image:focus-within .product-hover-image {
-
-  opacity: 1;
+/* Shop / Standard Card Stable Sizing */
+.product-card.shop-standard-card .product-hover-image {
+  display: none !important;
 }
 
 /* ========================================
@@ -444,7 +384,8 @@
 .product-card:hover .product-image-action-bar,
 .product-card:focus-within .product-image-action-bar,
 .product-card:active .product-image-action-bar,
-.product-card.is-product-added .product-image-action-bar {
+.product-card.is-product-added .product-image-action-bar,
+.product-card.is-mobile-active .product-image-action-bar {
 
   transform: translateY(0);
 
@@ -968,9 +909,10 @@
     height: 38px;
     top: 10px;
     right: 10px;
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    pointer-events: auto;
+    opacity: 0;
+    transform: translateY(-8px) scale(0.8);
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .product-badge {
@@ -982,15 +924,28 @@
 
   .product-image-action-bar {
     padding: 8px 10px;
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .image-add-to-cart-btn {
     min-height: 38px;
     font-size: 12px;
     padding: 8px 12px;
+  }
+
+  .product-card.is-mobile-active .product-wishlist-btn {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+    pointer-events: auto !important;
+  }
+
+  .product-card.is-mobile-active .product-image-action-bar {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
   }
 }
 
@@ -1085,16 +1040,6 @@
     padding: 6px 8px;
     border-radius: 999px;
   }
-
-  .cart-btn-content {
-    font-size: 11px;
-    gap: 4px;
-  }
-
-  .cart-btn-content svg {
-    width: 13px;
-    height: 13px;
-  }
 }
 
 @media (max-width: 360px) {
@@ -1127,25 +1072,6 @@
     min-height: 30px;
     font-size: 10px;
     padding: 5px 6px;
-  }
-
-  .cart-btn-content {
-    font-size: 10px;
-    gap: 3px;
-  }
-}
-
-@media (hover: none) {
-  .product-wishlist-btn {
-    opacity: 0.95;
-    transform: translateY(0) scale(1);
-    pointer-events: auto;
-  }
-
-  .product-image-action-bar {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
   }
 }
 
