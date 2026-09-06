@@ -1,5 +1,5 @@
-
 import React, { useState, useRef, useEffect } from "react";
+
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import {
@@ -28,7 +28,6 @@ import { useCart } from "../context/CartContext.jsx";
 import { useWishlist } from "../context/WishlistContext.jsx";
 import { useTheme } from "../context/ThemeContext.jsx";
 import SearchModal from "./SearchModal.jsx";
-
 import "../styles/header.css";
 
 /* =====================================================
@@ -47,7 +46,6 @@ export default function Header({ onOpenLogin }) {
   const { cartCount } = useCart();
   const { wishlistCount } = useWishlist();
   const { theme, toggleTheme } = useTheme();
-
   const navigate = useNavigate();
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -113,6 +111,10 @@ export default function Header({ onOpenLogin }) {
 
   return (
     <>
+      {/* =====================================================
+          SITE HEADER
+      ===================================================== */}
+
       <header
         className={`site-header ${
           isScrolled ? "is-scrolled" : ""
@@ -143,9 +145,7 @@ export default function Header({ onOpenLogin }) {
                   )
                 )}
 
-                {/* DUPLICATE SET
-                    Needed for seamless infinite scrolling
-                */}
+                {/* DUPLICATE SET */}
 
                 {ANNOUNCEMENT_MESSAGES.map(
                   (message, index) => (
@@ -181,18 +181,10 @@ export default function Header({ onOpenLogin }) {
         ===================================================== */}
 
         <div className="header-main">
-          {/* MOBILE HAMBURGER */}
 
-          <button
-            type="button"
-            className="mobile-menu-toggle"
-            onClick={() => setIsDrawerOpen(true)}
-            aria-label="Open mobile navigation"
-          >
-            <Menu size={22} />
-          </button>
-
-          {/* BRAND LOGO */}
+          {/* =====================================================
+              BRAND LOGO
+          ===================================================== */}
 
           <Link
             to="/"
@@ -284,9 +276,11 @@ export default function Header({ onOpenLogin }) {
                 }`}
               >
                 <div className="mega-menu-inner">
+
                   {/* LEFT CATEGORY GRID */}
 
                   <div className="mega-categories-grid">
+
                     {/* SKINCARE */}
 
                     <div className="mega-category-card">
@@ -519,6 +513,7 @@ export default function Header({ onOpenLogin }) {
                         </li>
                       </ul>
                     </div>
+
                   </div>
 
                   {/* SPOTLIGHT */}
@@ -644,6 +639,7 @@ export default function Header({ onOpenLogin }) {
           ===================================================== */}
 
           <div className="header-actions">
+
             {/* DESKTOP SEARCH */}
 
             <button
@@ -884,6 +880,20 @@ export default function Header({ onOpenLogin }) {
           </div>
         </div>
       </header>
+
+      {/* =====================================================
+          MOBILE MENU - OUTSIDE HEADER
+          ALWAYS VISIBLE WHILE SCROLLING
+      ===================================================== */}
+
+      <button
+        type="button"
+        className="mobile-menu-scroll-fixed"
+        onClick={() => setIsDrawerOpen(true)}
+        aria-label="Open mobile navigation"
+      >
+        <Menu size={22} />
+      </button>
 
       {/* =====================================================
           5. MOBILE NAVIGATION DRAWER
@@ -1235,4 +1245,3 @@ export default function Header({ onOpenLogin }) {
     </>
   );
 }
-
