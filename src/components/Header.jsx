@@ -1,7 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-
 import { Link, NavLink, useNavigate } from "react-router-dom";
-
 import {
   Search,
   ShoppingBag,
@@ -21,6 +19,7 @@ import {
   Home as HomeIcon,
   Info,
   Phone,
+  MoreVertical,
 } from "lucide-react";
 
 import { useAuth } from "../context/AuthContext";
@@ -29,10 +28,6 @@ import { useWishlist } from "../context/WishlistContext.jsx";
 import { useTheme } from "../context/ThemeContext.jsx";
 import SearchModal from "./SearchModal.jsx";
 import "../styles/header.css";
-
-/* =====================================================
-   ANNOUNCEMENT MESSAGES
-===================================================== */
 
 const ANNOUNCEMENT_MESSAGES = [
   "✨ Free delivery inside Pokhara Valley on orders over Rs. 1,500",
@@ -56,11 +51,11 @@ export default function Header({ onOpenLogin }) {
 
   const dropdownRef = useRef(null);
   const megaMenuRef = useRef(null);
+  const mobileMenuRef = useRef(null);
 
   /* =====================================================
      STICKY HEADER SCROLL DETECTION
   ===================================================== */
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -78,7 +73,6 @@ export default function Header({ onOpenLogin }) {
   /* =====================================================
      CLOSE USER DROPDOWN ON OUTSIDE CLICK
   ===================================================== */
-
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (
@@ -92,21 +86,80 @@ export default function Header({ onOpenLogin }) {
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener(
-        "mousedown",
-        handleClickOutside
-      );
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  /* =====================================================
+     CLOSE MOBILE 3-DOT POPUP ON OUTSIDE CLICK
+  ===================================================== */
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(e.target)
+      ) {
+        setIsDrawerOpen(false);
+      }
+    };
+
+    if (isDrawerOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("touchstart", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, [isDrawerOpen]);
+
+  /* =====================================================
+     CLOSE MOBILE POPUP WHEN SCREEN BECOMES DESKTOP
+  ===================================================== */
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 980) {
+        setIsDrawerOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   /* =====================================================
      LOGOUT
   ===================================================== */
-
   const handleLogout = () => {
     logout();
     setShowUserDropdown(false);
+    setIsDrawerOpen(false);
     navigate("/");
+  };
+
+  /* =====================================================
+     OPEN LOGIN
+  ===================================================== */
+  const handleLogin = () => {
+    setIsDrawerOpen(false);
+    setShowUserDropdown(false);
+
+    if (typeof onOpenLogin === "function") {
+      onOpenLogin();
+    } else {
+      navigate("/login");
+    }
+  };
+
+  /* =====================================================
+     CLOSE MOBILE POPUP
+  ===================================================== */
+  const closeMobileMenu = () => {
+    setIsDrawerOpen(false);
   };
 
   return (
@@ -114,7 +167,6 @@ export default function Header({ onOpenLogin }) {
       {/* =====================================================
           SITE HEADER
       ===================================================== */}
-
       <header
         className={`site-header ${
           isScrolled ? "is-scrolled" : ""
@@ -123,55 +175,38 @@ export default function Header({ onOpenLogin }) {
         {/* =====================================================
             1. TOP TICKER ANNOUNCEMENT BAR
         ===================================================== */}
-
         <div className="top-announcement">
           <div className="top-announcement-content">
-            <span className="ticker-badge">
-              Notice
-            </span>
+            <span className="ticker-badge">Notice</span>
 
             <div className="announcement-text-slider">
               <div className="announcement-track">
-                {/* FIRST SET */}
+                {ANNOUNCEMENT_MESSAGES.map((message, index) => (
+                  <span
+                    key={`announcement-${index}`}
+                    className="announcement-message"
+                  >
+                    {message}
+                  </span>
+                ))}
 
-                {ANNOUNCEMENT_MESSAGES.map(
-                  (message, index) => (
-                    <span
-                      key={`announcement-${index}`}
-                      className="announcement-message"
-                    >
-                      {message}
-                    </span>
-                  )
-                )}
-
-                {/* DUPLICATE SET */}
-
-                {ANNOUNCEMENT_MESSAGES.map(
-                  (message, index) => (
-                    <span
-                      key={`announcement-copy-${index}`}
-                      className="announcement-message"
-                    >
-                      {message}
-                    </span>
-                  )
-                )}
+                {ANNOUNCEMENT_MESSAGES.map((message, index) => (
+                  <span
+                    key={`announcement-copy-${index}`}
+                    className="announcement-message"
+                  >
+                    {message}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* =====================================================
-              POKHARA HOTLINE
-          ===================================================== */}
-
+          {/* POKHARA HOTLINE */}
           <div className="top-announcement-right">
             <span className="store-hotline">
               <PhoneCall size={12} />
-
-              <span>
-                Pokhara Hotline: 9800000000
-              </span>
+              <span>Pokhara Hotline: 9800000000</span>
             </span>
           </div>
         </div>
@@ -179,13 +214,8 @@ export default function Header({ onOpenLogin }) {
         {/* =====================================================
             2. MAIN HEADER BAR
         ===================================================== */}
-
         <div className="header-main">
-
-          {/* =====================================================
-              BRAND LOGO
-          ===================================================== */}
-
+          {/* BRAND LOGO (LEFT SIDE) */}
           <Link
             to="/"
             className="brand-logo-container"
@@ -205,9 +235,7 @@ export default function Header({ onOpenLogin }) {
             </div>
 
             <div className="brand-text">
-              <span className="brand-name">
-                GEETS
-              </span>
+              <span className="brand-name">GEETS</span>
 
               <span className="brand-subtitle">
                 <span className="brand-dot" />
@@ -219,19 +247,15 @@ export default function Header({ onOpenLogin }) {
           {/* =====================================================
               3. DESKTOP NAVIGATION
           ===================================================== */}
-
           <nav
             className="desktop-nav"
             aria-label="Main Navigation"
           >
             {/* HOME */}
-
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `nav-link ${
-                  isActive ? "active-nav" : ""
-                }`
+                `nav-link ${isActive ? "active-nav" : ""}`
               }
               end
             >
@@ -239,16 +263,11 @@ export default function Header({ onOpenLogin }) {
             </NavLink>
 
             {/* SHOP */}
-
             <div
               className="mega-menu-trigger-container"
               ref={megaMenuRef}
-              onMouseEnter={() =>
-                setIsShopHovered(true)
-              }
-              onMouseLeave={() =>
-                setIsShopHovered(false)
-              }
+              onMouseEnter={() => setIsShopHovered(true)}
+              onMouseLeave={() => setIsShopHovered(false)}
             >
               <NavLink
                 to="/shop"
@@ -269,36 +288,25 @@ export default function Header({ onOpenLogin }) {
               </NavLink>
 
               {/* MEGA MENU */}
-
               <div
                 className={`mega-menu-flyout ${
                   isShopHovered ? "show" : ""
                 }`}
               >
                 <div className="mega-menu-inner">
-
-                  {/* LEFT CATEGORY GRID */}
-
+                  {/* CATEGORY GRID */}
                   <div className="mega-categories-grid">
-
                     {/* SKINCARE */}
-
                     <div className="mega-category-card">
                       <Link
                         to="/shop?category=Skincare"
                         className="mega-category-header"
-                        onClick={() =>
-                          setIsShopHovered(false)
-                        }
+                        onClick={() => setIsShopHovered(false)}
                       >
-                        <span className="mega-cat-icon">
-                          ✨
-                        </span>
+                        <span className="mega-cat-icon">✨</span>
 
                         <div>
-                          <h4 className="mega-cat-title">
-                            Skincare
-                          </h4>
+                          <h4 className="mega-cat-title">Skincare</h4>
 
                           <p className="mega-cat-desc">
                             50 Products • Serums, Toners & SPF
@@ -310,9 +318,7 @@ export default function Header({ onOpenLogin }) {
                         <li>
                           <Link
                             to="/shop?category=Skincare"
-                            onClick={() =>
-                              setIsShopHovered(false)
-                            }
+                            onClick={() => setIsShopHovered(false)}
                           >
                             Serums
                           </Link>
@@ -321,9 +327,7 @@ export default function Header({ onOpenLogin }) {
                         <li>
                           <Link
                             to="/shop?category=Skincare"
-                            onClick={() =>
-                              setIsShopHovered(false)
-                            }
+                            onClick={() => setIsShopHovered(false)}
                           >
                             Sunscreen
                           </Link>
@@ -332,9 +336,7 @@ export default function Header({ onOpenLogin }) {
                         <li>
                           <Link
                             to="/shop?category=Skincare"
-                            onClick={() =>
-                              setIsShopHovered(false)
-                            }
+                            onClick={() => setIsShopHovered(false)}
                           >
                             Cleansers
                           </Link>
@@ -343,23 +345,16 @@ export default function Header({ onOpenLogin }) {
                     </div>
 
                     {/* MAKEUP */}
-
                     <div className="mega-category-card">
                       <Link
                         to="/shop?category=Makeup"
                         className="mega-category-header"
-                        onClick={() =>
-                          setIsShopHovered(false)
-                        }
+                        onClick={() => setIsShopHovered(false)}
                       >
-                        <span className="mega-cat-icon">
-                          💄
-                        </span>
+                        <span className="mega-cat-icon">💄</span>
 
                         <div>
-                          <h4 className="mega-cat-title">
-                            Makeup
-                          </h4>
+                          <h4 className="mega-cat-title">Makeup</h4>
 
                           <p className="mega-cat-desc">
                             50+ Products • Lipsticks & Foundations
@@ -371,9 +366,7 @@ export default function Header({ onOpenLogin }) {
                         <li>
                           <Link
                             to="/shop?category=Makeup&subcategory=Lipstick"
-                            onClick={() =>
-                              setIsShopHovered(false)
-                            }
+                            onClick={() => setIsShopHovered(false)}
                           >
                             Lipsticks
                           </Link>
@@ -382,9 +375,7 @@ export default function Header({ onOpenLogin }) {
                         <li>
                           <Link
                             to="/shop?category=Makeup&subcategory=Blush"
-                            onClick={() =>
-                              setIsShopHovered(false)
-                            }
+                            onClick={() => setIsShopHovered(false)}
                           >
                             Blush
                           </Link>
@@ -393,9 +384,7 @@ export default function Header({ onOpenLogin }) {
                         <li>
                           <Link
                             to="/shop?category=Makeup&subcategory=Foundation"
-                            onClick={() =>
-                              setIsShopHovered(false)
-                            }
+                            onClick={() => setIsShopHovered(false)}
                           >
                             Foundation
                           </Link>
@@ -404,23 +393,16 @@ export default function Header({ onOpenLogin }) {
                     </div>
 
                     {/* HAIRCARE */}
-
                     <div className="mega-category-card">
                       <Link
                         to="/shop?category=Haircare"
                         className="mega-category-header"
-                        onClick={() =>
-                          setIsShopHovered(false)
-                        }
+                        onClick={() => setIsShopHovered(false)}
                       >
-                        <span className="mega-cat-icon">
-                          🌿
-                        </span>
+                        <span className="mega-cat-icon">🌿</span>
 
                         <div>
-                          <h4 className="mega-cat-title">
-                            Haircare
-                          </h4>
+                          <h4 className="mega-cat-title">Haircare</h4>
 
                           <p className="mega-cat-desc">
                             30 Products • Oils, Shampoos & Masks
@@ -432,9 +414,7 @@ export default function Header({ onOpenLogin }) {
                         <li>
                           <Link
                             to="/shop?category=Haircare"
-                            onClick={() =>
-                              setIsShopHovered(false)
-                            }
+                            onClick={() => setIsShopHovered(false)}
                           >
                             Hair Oils
                           </Link>
@@ -443,9 +423,7 @@ export default function Header({ onOpenLogin }) {
                         <li>
                           <Link
                             to="/shop?category=Haircare"
-                            onClick={() =>
-                              setIsShopHovered(false)
-                            }
+                            onClick={() => setIsShopHovered(false)}
                           >
                             Shampoos
                           </Link>
@@ -454,9 +432,7 @@ export default function Header({ onOpenLogin }) {
                         <li>
                           <Link
                             to="/shop?category=Haircare"
-                            onClick={() =>
-                              setIsShopHovered(false)
-                            }
+                            onClick={() => setIsShopHovered(false)}
                           >
                             Conditioners
                           </Link>
@@ -465,23 +441,16 @@ export default function Header({ onOpenLogin }) {
                     </div>
 
                     {/* BODYCARE */}
-
                     <div className="mega-category-card">
                       <Link
                         to="/shop?category=Bodycare"
                         className="mega-category-header"
-                        onClick={() =>
-                          setIsShopHovered(false)
-                        }
+                        onClick={() => setIsShopHovered(false)}
                       >
-                        <span className="mega-cat-icon">
-                          🌸
-                        </span>
+                        <span className="mega-cat-icon">🌸</span>
 
                         <div>
-                          <h4 className="mega-cat-title">
-                            Bodycare
-                          </h4>
+                          <h4 className="mega-cat-title">Bodycare</h4>
 
                           <p className="mega-cat-desc">
                             10 Products • Lotions & Butters
@@ -493,9 +462,7 @@ export default function Header({ onOpenLogin }) {
                         <li>
                           <Link
                             to="/shop?category=Bodycare"
-                            onClick={() =>
-                              setIsShopHovered(false)
-                            }
+                            onClick={() => setIsShopHovered(false)}
                           >
                             Body Lotion
                           </Link>
@@ -504,53 +471,36 @@ export default function Header({ onOpenLogin }) {
                         <li>
                           <Link
                             to="/shop?category=Bodycare"
-                            onClick={() =>
-                              setIsShopHovered(false)
-                            }
+                            onClick={() => setIsShopHovered(false)}
                           >
                             Body Butter
                           </Link>
                         </li>
                       </ul>
                     </div>
-
                   </div>
 
                   {/* SPOTLIGHT */}
-
                   <div className="mega-spotlight-card">
                     <span className="mega-spotlight-badge">
-                      <Flame
-                        size={12}
-                        color="#fca5a5"
-                      />
-
-                      <span>
-                        Special Deals
-                      </span>
+                      <Flame size={12} color="#fca5a5" />
+                      <span>Special Deals</span>
                     </span>
 
                     <div className="mega-spotlight-content">
-                      <h5>
-                        Limited Time Offers
-                      </h5>
+                      <h5>Limited Time Offers</h5>
 
                       <p>
-                        Save up to 25% on 20 selected
-                        best-selling items in Nepal.
+                        Save up to 25% on 20 selected best-selling items in
+                        Nepal.
                       </p>
 
                       <Link
                         to="/shop"
                         className="mega-spotlight-btn"
-                        onClick={() =>
-                          setIsShopHovered(false)
-                        }
+                        onClick={() => setIsShopHovered(false)}
                       >
-                        <span>
-                          Shop Discounts
-                        </span>
-
+                        <span>Shop Discounts</span>
                         <ArrowRight size={13} />
                       </Link>
                     </div>
@@ -558,34 +508,21 @@ export default function Header({ onOpenLogin }) {
                 </div>
 
                 {/* MEGA BOTTOM BAR */}
-
                 <div className="mega-bottom-bar">
                   <div className="mega-quick-links">
                     <Link
                       to="/shop"
-                      onClick={() =>
-                        setIsShopHovered(false)
-                      }
+                      onClick={() => setIsShopHovered(false)}
                     >
-                      <Sparkles
-                        size={13}
-                        color="var(--primary)"
-                      />
-
+                      <Sparkles size={13} color="var(--primary)" />
                       Best Sellers
                     </Link>
 
                     <Link
                       to="/shop"
-                      onClick={() =>
-                        setIsShopHovered(false)
-                      }
+                      onClick={() => setIsShopHovered(false)}
                     >
-                      <ShieldCheck
-                        size={13}
-                        color="var(--primary)"
-                      />
-
+                      <ShieldCheck size={13} color="var(--primary)" />
                       100% Genuine Care
                     </Link>
                   </div>
@@ -593,14 +530,9 @@ export default function Header({ onOpenLogin }) {
                   <Link
                     to="/shop"
                     className="mega-view-all-link"
-                    onClick={() =>
-                      setIsShopHovered(false)
-                    }
+                    onClick={() => setIsShopHovered(false)}
                   >
-                    <span>
-                      View All Products
-                    </span>
-
+                    <span>View All Products</span>
                     <ArrowRight size={13} />
                   </Link>
                 </div>
@@ -608,26 +540,20 @@ export default function Header({ onOpenLogin }) {
             </div>
 
             {/* ABOUT */}
-
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                `nav-link ${
-                  isActive ? "active-nav" : ""
-                }`
+                `nav-link ${isActive ? "active-nav" : ""}`
               }
             >
               <span>About</span>
             </NavLink>
 
             {/* CONTACT */}
-
             <NavLink
               to="/contact"
               className={({ isActive }) =>
-                `nav-link ${
-                  isActive ? "active-nav" : ""
-                }`
+                `nav-link ${isActive ? "active-nav" : ""}`
               }
             >
               <span>Contact</span>
@@ -635,50 +561,37 @@ export default function Header({ onOpenLogin }) {
           </nav>
 
           {/* =====================================================
-              4. HEADER ACTIONS
+              4. HEADER ACTIONS (RIGHT SIDE)
+              On Mobile: [ ❤️ Wishlist ] [ 👤 User/Login ] [ ⋮ 3-Dot ]
           ===================================================== */}
-
           <div className="header-actions">
-
             {/* DESKTOP SEARCH */}
-
             <button
               type="button"
               className="header-search-bar-btn"
-              onClick={() =>
-                setIsSearchOpen(true)
-              }
+              onClick={() => setIsSearchOpen(true)}
               aria-label="Search Catalog"
             >
-              <Search
-                size={16}
-                className="search-icon-anim"
-              />
+              <Search size={16} className="search-icon-anim" />
 
               <span className="search-text-placeholder">
                 Search cosmetics & skincare...
               </span>
 
-              <kbd className="search-keyboard-hint">
-                ⌘K
-              </kbd>
+              <kbd className="search-keyboard-hint">⌘K</kbd>
             </button>
 
-            {/* MOBILE SEARCH */}
-
+            {/* MOBILE SEARCH (hidden) */}
             <button
               type="button"
               className="header-icon-btn mobile-search-trigger"
-              onClick={() =>
-                setIsSearchOpen(true)
-              }
+              onClick={() => setIsSearchOpen(true)}
               aria-label="Search Catalog"
             >
               <Search size={18} />
             </button>
 
-            {/* THEME TOGGLE */}
-
+            {/* THEME (desktop only) */}
             <button
               type="button"
               className="header-icon-btn theme-toggle-btn"
@@ -698,17 +611,13 @@ export default function Header({ onOpenLogin }) {
               </div>
             </button>
 
-            {/* WISHLIST */}
-
+            {/* 1. WISHLIST BUTTON (Desktop & Mobile) */}
             <Link
               to="/wishlist"
               className="header-icon-btn wishlist-nav-btn"
               aria-label={`Wishlist with ${wishlistCount} items`}
             >
-              <Heart
-                size={19}
-                color="#e11d48"
-              />
+              <Heart size={19} color="#e11d48" />
 
               {wishlistCount > 0 && (
                 <span className="nav-badge animate-pop">
@@ -717,8 +626,7 @@ export default function Header({ onOpenLogin }) {
               )}
             </Link>
 
-            {/* USER */}
-
+            {/* 2. USER / SIGN IN BUTTON (Desktop & Mobile) */}
             {user ? (
               <div
                 className="user-profile-menu"
@@ -730,17 +638,13 @@ export default function Header({ onOpenLogin }) {
                     showUserDropdown ? "open" : ""
                   }`}
                   onClick={() =>
-                    setShowUserDropdown(
-                      !showUserDropdown
-                    )
+                    setShowUserDropdown(!showUserDropdown)
                   }
                   aria-label="User Account Menu"
                 >
                   <span className="avatar-letter">
                     {user.name
-                      ? user.name
-                          .charAt(0)
-                          .toUpperCase()
+                      ? user.name.charAt(0).toUpperCase()
                       : "U"}
                   </span>
 
@@ -752,9 +656,7 @@ export default function Header({ onOpenLogin }) {
                     <div className="dropdown-user-header">
                       <div className="dropdown-avatar-circle">
                         {user.name
-                          ? user.name
-                              .charAt(0)
-                              .toUpperCase()
+                          ? user.name.charAt(0).toUpperCase()
                           : "U"}
                       </div>
 
@@ -773,21 +675,23 @@ export default function Header({ onOpenLogin }) {
 
                     <div className="dropdown-nav-items">
                       <Link
+                        to="/profile"
+                        className="dropdown-link-item"
+                        onClick={() => setShowUserDropdown(false)}
+                      >
+                        <User size={16} color="var(--primary)" />
+                        <span>My Profile</span>
+                      </Link>
+
+                      <Link
                         to="/wishlist"
                         className="dropdown-link-item"
-                        onClick={() =>
-                          setShowUserDropdown(false)
-                        }
+                        onClick={() => setShowUserDropdown(false)}
                       >
-                        <Heart
-                          size={16}
-                          color="#e11d48"
-                        />
+                        <Heart size={16} color="#e11d48" />
 
                         <div className="dropdown-link-split">
-                          <span>
-                            My Wishlist
-                          </span>
+                          <span>My Wishlist</span>
 
                           {wishlistCount > 0 && (
                             <span className="dropdown-count-pill">
@@ -800,9 +704,7 @@ export default function Header({ onOpenLogin }) {
                       <Link
                         to="/cart"
                         className="dropdown-link-item"
-                        onClick={() =>
-                          setShowUserDropdown(false)
-                        }
+                        onClick={() => setShowUserDropdown(false)}
                       >
                         <ShoppingBag
                           size={16}
@@ -810,9 +712,7 @@ export default function Header({ onOpenLogin }) {
                         />
 
                         <div className="dropdown-link-split">
-                          <span>
-                            Shopping Cart
-                          </span>
+                          <span>Shopping Cart</span>
 
                           {cartCount > 0 && (
                             <span className="dropdown-count-pill">
@@ -830,10 +730,7 @@ export default function Header({ onOpenLogin }) {
                         onClick={handleLogout}
                       >
                         <LogOut size={16} />
-
-                        <span>
-                          Sign Out
-                        </span>
+                        <span>Sign Out</span>
                       </button>
                     </div>
                   </div>
@@ -843,16 +740,8 @@ export default function Header({ onOpenLogin }) {
               <button
                 type="button"
                 className="header-signin-btn"
-                onClick={() => {
-                  if (
-                    typeof onOpenLogin ===
-                    "function"
-                  ) {
-                    onOpenLogin();
-                  } else {
-                    navigate("/login");
-                  }
-                }}
+                onClick={handleLogin}
+                aria-label="Sign In"
               >
                 <User size={16} />
 
@@ -862,8 +751,7 @@ export default function Header({ onOpenLogin }) {
               </button>
             )}
 
-            {/* SHOPPING CART */}
-
+            {/* CART (Desktop Only) */}
             <Link
               to="/cart"
               className="cart-button"
@@ -877,370 +765,180 @@ export default function Header({ onOpenLogin }) {
                 </span>
               )}
             </Link>
+
+            {/* 3. THREE-DOT MENU & POPUP (Mobile Only) */}
+            <div
+              className="mobile-menu-wrapper"
+              ref={mobileMenuRef}
+            >
+              <button
+                type="button"
+                className={`mobile-three-dot-menu ${
+                  isDrawerOpen ? "active" : ""
+                }`}
+                onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+                aria-label={
+                  isDrawerOpen ? "Close Menu" : "Open Menu"
+                }
+                aria-expanded={isDrawerOpen}
+              >
+                <MoreVertical size={20} />
+              </button>
+
+              {/* THREE-DOT POPUP DROPDOWN */}
+              {isDrawerOpen && (
+                <div className="mobile-simple-menu open">
+                  <div className="mobile-menu-title-row">
+                    <span className="mobile-menu-title">
+                      Menu
+                    </span>
+                  </div>
+
+                  <div className="mobile-menu-divider" />
+
+                  <div className="mobile-simple-menu-list">
+                    {/* ❤️ Wishlist */}
+                    <Link
+                      to="/wishlist"
+                      className="mobile-simple-menu-item"
+                      onClick={closeMobileMenu}
+                    >
+                      <span className="mobile-menu-item-icon wishlist">
+                        <Heart size={17} color="#e11d48" />
+                      </span>
+
+                      <span className="mobile-menu-item-text">
+                        Wishlist
+                      </span>
+
+                      {wishlistCount > 0 && (
+                        <span className="mobile-menu-badge">
+                          {wishlistCount}
+                        </span>
+                      )}
+                    </Link>
+
+                    {/* 👤 Login / My Account */}
+                    {user ? (
+                      <Link
+                        to="/profile"
+                        className="mobile-simple-menu-item"
+                        onClick={closeMobileMenu}
+                      >
+                        <span className="mobile-menu-item-icon user">
+                          <User size={17} color="var(--primary)" />
+                        </span>
+
+                        <span className="mobile-menu-item-text">
+                          My Account
+                        </span>
+                      </Link>
+                    ) : (
+                      <button
+                        type="button"
+                        className="mobile-simple-menu-item"
+                        onClick={handleLogin}
+                      >
+                        <span className="mobile-menu-item-icon user">
+                          <User size={17} color="var(--primary)" />
+                        </span>
+
+                        <span className="mobile-menu-item-text">
+                          Login
+                        </span>
+                      </button>
+                    )}
+
+                    {/* 🏠 Home */}
+                    <NavLink
+                      to="/"
+                      end
+                      className={({ isActive }) =>
+                        `mobile-simple-menu-item ${
+                          isActive ? "active-mobile-link" : ""
+                        }`
+                      }
+                      onClick={closeMobileMenu}
+                    >
+                      <span className="mobile-menu-item-icon home">
+                        <HomeIcon size={17} />
+                      </span>
+
+                      <span className="mobile-menu-item-text">
+                        Home
+                      </span>
+                    </NavLink>
+
+                    {/* 🛍 Shop */}
+                    <NavLink
+                      to="/shop"
+                      className={({ isActive }) =>
+                        `mobile-simple-menu-item ${
+                          isActive ? "active-mobile-link" : ""
+                        }`
+                      }
+                      onClick={closeMobileMenu}
+                    >
+                      <span className="mobile-menu-item-icon shop">
+                        <ShoppingBag size={17} />
+                      </span>
+
+                      <span className="mobile-menu-item-text">
+                        Shop
+                      </span>
+                    </NavLink>
+
+                    {/* ℹ About */}
+                    <NavLink
+                      to="/about"
+                      className={({ isActive }) =>
+                        `mobile-simple-menu-item ${
+                          isActive ? "active-mobile-link" : ""
+                        }`
+                      }
+                      onClick={closeMobileMenu}
+                    >
+                      <span className="mobile-menu-item-icon about">
+                        <Info size={17} />
+                      </span>
+
+                      <span className="mobile-menu-item-text">
+                        About
+                      </span>
+                    </NavLink>
+
+                    {/* 📞 Contact */}
+                    <NavLink
+                      to="/contact"
+                      className={({ isActive }) =>
+                        `mobile-simple-menu-item ${
+                          isActive ? "active-mobile-link" : ""
+                        }`
+                      }
+                      onClick={closeMobileMenu}
+                    >
+                      <span className="mobile-menu-item-icon contact">
+                        <Phone size={17} />
+                      </span>
+
+                      <span className="mobile-menu-item-text">
+                        Contact
+                      </span>
+                    </NavLink>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </header>
 
       {/* =====================================================
-          MOBILE MENU - OUTSIDE HEADER
-          ALWAYS VISIBLE WHILE SCROLLING
-      ===================================================== */}
-
-      <button
-        type="button"
-        className="mobile-menu-scroll-fixed"
-        onClick={() => setIsDrawerOpen(true)}
-        aria-label="Open mobile navigation"
-      >
-        <Menu size={22} />
-      </button>
-
-      {/* =====================================================
-          5. MOBILE NAVIGATION DRAWER
-      ===================================================== */}
-
-      <div
-        className={`mobile-drawer-backdrop ${
-          isDrawerOpen ? "open" : ""
-        }`}
-        onClick={() =>
-          setIsDrawerOpen(false)
-        }
-      />
-
-      <aside
-        className={`mobile-drawer-sidebar ${
-          isDrawerOpen ? "open" : ""
-        }`}
-      >
-        {/* DRAWER HEADER */}
-
-        <div className="drawer-header">
-          <Link
-            to="/"
-            className="drawer-brand"
-            onClick={() =>
-              setIsDrawerOpen(false)
-            }
-          >
-            <div className="logo-placeholder-box small">
-              <img
-                src="/logo of geets beauty product.png"
-                alt="Geets Logo"
-                className="site-logo"
-                onError={(e) => {
-                  e.target.style.display = "none";
-                }}
-              />
-            </div>
-
-            <div>
-              <h3 className="drawer-brand-name">
-                GEETS
-              </h3>
-
-              <span className="drawer-brand-sub">
-                BEAUTY WORLD
-              </span>
-            </div>
-          </Link>
-
-          <button
-            type="button"
-            className="drawer-close-btn"
-            onClick={() =>
-              setIsDrawerOpen(false)
-            }
-            aria-label="Close navigation"
-          >
-            <X size={18} />
-          </button>
-        </div>
-
-        {/* USER BANNER */}
-
-        <div className="drawer-user-banner">
-          {user ? (
-            <div className="drawer-user-info">
-              <div className="drawer-avatar">
-                {user.name
-                  ? user.name
-                      .charAt(0)
-                      .toUpperCase()
-                  : "U"}
-              </div>
-
-              <div className="drawer-user-details">
-                <strong>
-                  {user.name || "Customer"}
-                </strong>
-
-                <small>
-                  {user.email || ""}
-                </small>
-              </div>
-            </div>
-          ) : (
-            <button
-              type="button"
-              className="drawer-login-cta"
-              onClick={() => {
-                setIsDrawerOpen(false);
-
-                if (
-                  typeof onOpenLogin ===
-                  "function"
-                ) {
-                  onOpenLogin();
-                } else {
-                  navigate("/login");
-                }
-              }}
-            >
-              <User size={16} />
-
-              <span>
-                Sign In / Create Account
-              </span>
-            </button>
-          )}
-        </div>
-
-        {/* SEARCH */}
-
-        <div className="drawer-search-box">
-          <button
-            type="button"
-            className="drawer-search-btn"
-            onClick={() => {
-              setIsDrawerOpen(false);
-              setIsSearchOpen(true);
-            }}
-          >
-            <Search size={16} />
-
-            <span>
-              Search products...
-            </span>
-          </button>
-        </div>
-
-        {/* NAVIGATION */}
-
-        <div className="drawer-nav-list">
-          <span className="drawer-section-label">
-            PAGES
-          </span>
-
-          <NavLink
-            to="/"
-            className="drawer-nav-item"
-            onClick={() =>
-              setIsDrawerOpen(false)
-            }
-            end
-          >
-            <HomeIcon size={18} />
-
-            <span>
-              Home
-            </span>
-          </NavLink>
-
-          <NavLink
-            to="/shop"
-            className="drawer-nav-item"
-            onClick={() =>
-              setIsDrawerOpen(false)
-            }
-          >
-            <ShoppingBag size={18} />
-
-            <div className="drawer-item-split">
-              <span>
-                Shop All Products
-              </span>
-
-              <span className="drawer-pill">
-                141
-              </span>
-            </div>
-          </NavLink>
-
-          <span className="drawer-section-label">
-            CATEGORIES
-          </span>
-
-          <Link
-            to="/shop?category=Skincare"
-            className="drawer-nav-item sub-item"
-            onClick={() =>
-              setIsDrawerOpen(false)
-            }
-          >
-            <span className="drawer-icon">
-              ✨
-            </span>
-
-            <span>
-              Skincare (50)
-            </span>
-          </Link>
-
-          <Link
-            to="/shop?category=Makeup"
-            className="drawer-nav-item sub-item"
-            onClick={() =>
-              setIsDrawerOpen(false)
-            }
-          >
-            <span className="drawer-icon">
-              💄
-            </span>
-
-            <span>
-              Makeup (51)
-            </span>
-          </Link>
-
-          <Link
-            to="/shop?category=Haircare"
-            className="drawer-nav-item sub-item"
-            onClick={() =>
-              setIsDrawerOpen(false)
-            }
-          >
-            <span className="drawer-icon">
-              🌿
-            </span>
-
-            <span>
-              Haircare (30)
-            </span>
-          </Link>
-
-          <Link
-            to="/shop?category=Bodycare"
-            className="drawer-nav-item sub-item"
-            onClick={() =>
-              setIsDrawerOpen(false)
-            }
-          >
-            <span className="drawer-icon">
-              🌸
-            </span>
-
-            <span>
-              Bodycare (10)
-            </span>
-          </Link>
-
-          <span className="drawer-section-label">
-            COMPANY
-          </span>
-
-          <NavLink
-            to="/about"
-            className="drawer-nav-item"
-            onClick={() =>
-              setIsDrawerOpen(false)
-            }
-          >
-            <Info size={18} />
-
-            <span>
-              About Us
-            </span>
-          </NavLink>
-
-          <NavLink
-            to="/contact"
-            className="drawer-nav-item"
-            onClick={() =>
-              setIsDrawerOpen(false)
-            }
-          >
-            <Phone size={18} />
-
-            <span>
-              Contact & Store
-            </span>
-          </NavLink>
-        </div>
-
-        {/* DRAWER FOOTER */}
-
-        <div className="drawer-footer">
-          <div className="drawer-theme-row">
-            <span className="drawer-theme-label">
-              Appearance
-            </span>
-
-            <button
-              type="button"
-              className="drawer-theme-toggle-btn"
-              onClick={toggleTheme}
-            >
-              {theme === "light" ? (
-                <Moon size={14} />
-              ) : (
-                <Sun size={14} />
-              )}
-
-              <span>
-                {theme === "light"
-                  ? "Dark Mode"
-                  : "Light Mode"}
-              </span>
-            </button>
-          </div>
-
-          <div className="drawer-store-meta">
-            <div className="drawer-meta-line">
-              <PhoneCall size={12} />
-
-              <span>
-                Pokhara: +977 9800000000
-              </span>
-            </div>
-
-            <div className="drawer-meta-line">
-              <ShieldCheck size={12} />
-
-              <span>
-                100% Genuine Certified
-              </span>
-            </div>
-          </div>
-
-          {user && (
-            <button
-              type="button"
-              className="drawer-logout-btn"
-              onClick={() => {
-                setIsDrawerOpen(false);
-                handleLogout();
-              }}
-            >
-              <LogOut size={16} />
-
-              <span>
-                Log Out
-              </span>
-            </button>
-          )}
-        </div>
-      </aside>
-
-      {/* =====================================================
           SEARCH MODAL
       ===================================================== */}
-
       <SearchModal
         isOpen={isSearchOpen}
-        onClose={() =>
-          setIsSearchOpen(false)
-        }
+        onClose={() => setIsSearchOpen(false)}
       />
     </>
   );
