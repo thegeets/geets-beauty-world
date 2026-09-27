@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import {
   Mail,
-  Phone,
+  MessageCircle,
   MapPin,
   Clock,
   ShieldCheck,
@@ -62,9 +62,14 @@ export default function Footer() {
           </p>
 
           <div className="footer-contact-lines">
-            <a href="tel:+9779827104869" className="footer-contact-link">
-              <Phone size={15} />
-              <span>+977 9827104869</span>
+            <a
+              href="https://wa.me/9779827104869"
+              target="_blank"
+              rel="noreferrer"
+              className="footer-contact-link"
+            >
+              <MessageCircle size={15} />
+              <span>WhatsApp Support</span>
             </a>
             <a href="mailto:thegeets86@gmail.com" className="footer-contact-link">
               <Mail size={15} />

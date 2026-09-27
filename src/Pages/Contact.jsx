@@ -1,4 +1,4 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, MessageCircle } from "lucide-react";
 
 export default function Contact() {
   return (
@@ -14,10 +14,16 @@ export default function Contact() {
       <div className="contact-layout">
         <div className="contact-info">
           <div className="contact-card">
-            <Phone size={24} />
+            <MessageCircle size={24} />
             <div>
-              <h3>Phone / WhatsApp</h3>
-              <a href="tel:+9779827104869">+977 9827104869</a>
+              <h3>WhatsApp</h3>
+              <a
+                href="https://wa.me/9779827104869"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Chat on WhatsApp
+              </a>
             </div>
           </div>
 

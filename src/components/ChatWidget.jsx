@@ -62,7 +62,7 @@ export default function ChatWidget() {
       } else if (lowerText.includes("hi") || lowerText.includes("hello") || lowerText.includes("helo") || lowerText.includes("namaste")) {
         replyText = "Hello! How can I help you today? Feel free to ask about our skincare routine or makeup collections! 🌸";
       } else {
-        replyText = "Thank you for reaching out! For instant order bookings or custom cosmetic queries, you can also talk to Geeta directly at +977 9827104869 or click on the WhatsApp tab above! 💬";
+        replyText = "Thank you for reaching out! For instant order bookings or custom cosmetic queries, you can chat with Geeta directly by clicking on the WhatsApp tab above! 💬";
       }
 
       const botMsg = {
